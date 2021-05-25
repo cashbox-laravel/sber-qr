@@ -32,7 +32,7 @@ Or manually update `require` block of `composer.json` and run `composer update`.
 
 ## Using
 
-> See [parent](https://github.com/andrey-helldar/cashier) project.
+> See [parent](https://github.com/andrey-helldar/cashier#readme) project.
 
 ## For Enterprise
 
