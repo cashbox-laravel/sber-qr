@@ -28,7 +28,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Helldar\\Cashier\\Drivers\\Sber\\": "src"
+            "Helldar\\CashierDriver\\Sber\\": "src"
         }
     },
     "autoload-dev": {
