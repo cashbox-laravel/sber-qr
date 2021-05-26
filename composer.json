@@ -1,13 +1,14 @@
 {
-    "name": "andrey-helldar/cashier-sber",
-    "description": "Driver for andrey-helldar/cashier",
+    "name": "andrey-helldar/cashier-sber-qr",
+    "description": "Driver for payment with QR codes via Sber (see andrey-helldar/cashier)",
     "type": "library",
     "license": "MIT",
     "keywords": [
         "bank",
         "billing",
         "cashier",
-        "sber"
+        "sber",
+        "qr"
     ],
     "authors": [
         {
@@ -16,8 +17,8 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/andrey-helldar/cashier/issues",
-        "source": "https://github.com/andrey-helldar/cashier"
+        "issues": "https://github.com/andrey-helldar/cashier-sber-qr/issues",
+        "source": "https://github.com/andrey-helldar/cashier-sber-qr"
     },
     "require": {
         "php": "^7.2.5|^8.0"
@@ -28,7 +29,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Helldar\\CashierDriver\\Sber\\": "src"
+            "Helldar\\CashierDriver\\Sber\\QR\\": "src"
         }
     },
     "autoload-dev": {
