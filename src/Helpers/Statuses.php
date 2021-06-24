@@ -1,6 +1,6 @@
 <?php
 
-namespace Helldar\CashierDriver\Sber\Helpers;
+namespace Helldar\CashierDriver\Sber\QR\Helpers;
 
 use Helldar\Cashier\Helpers\Statuses as BaseStatus;
 

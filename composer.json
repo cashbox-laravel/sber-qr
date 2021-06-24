@@ -22,9 +22,10 @@
     },
     "require": {
         "php": "^7.2.5|^8.0",
-        "andrey-helldar/cashier-sber-auth": "dev-main"
+        "andrey-helldar/cashier-sber-auth": "v1.0-RC2"
     },
     "require-dev": {
+        "andrey-helldar/cashier": "dev-main",
         "phpunit/phpunit": "^9.0",
         "symfony/var-dumper": "^4.0|^5.0"
     },
@@ -43,11 +44,5 @@
         "sort-packages": true
     },
     "minimum-stability": "stable",
-    "prefer-stable": true,
-    "repositories": [
-        {
-            "type": "path",
-            "url": "../cashier-sber-auth"
-        }
-    ]
+    "prefer-stable": true
 }
