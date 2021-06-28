@@ -21,6 +21,16 @@ abstract class Payment extends BasePayment
         ];
     }
 
+    public function getTerminalId(): string
+    {
+        return $this->terminalId();
+    }
+
+    public function getMemberId(): string
+    {
+        return $this->memberId();
+    }
+
     protected function terminalId(): string
     {
         $this->validateMethod(static::class, __FUNCTION__);
@@ -29,15 +39,5 @@ abstract class Payment extends BasePayment
     protected function memberId(): string
     {
         $this->validateMethod(static::class, __FUNCTION__);
-    }
-
-    protected function getTerminalId(): string
-    {
-        return $this->terminalId();
-    }
-
-    protected function getMemberId(): string
-    {
-        return $this->memberId();
     }
 }
