@@ -2,9 +2,9 @@
 
 namespace Helldar\CashierDriver\Sber\QR\Resources;
 
-use Helldar\Cashier\Resources\Payment as BasePayment;
+use Helldar\Cashier\Resources\Request as BasePayment;
 
-abstract class Payment extends BasePayment
+abstract class Request extends BasePayment
 {
     public function toArray(): array
     {

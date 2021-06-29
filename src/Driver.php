@@ -3,7 +3,7 @@
 namespace Helldar\CashierDriver\Sber\QR;
 
 use Helldar\Cashier\DTO\Request;
-use Helldar\Cashier\DTO\Response;
+use Helldar\Cashier\Resources\Response;
 use Helldar\Cashier\Services\Driver as BaseDriver;
 use Helldar\CashierDriver\Sber\QR\Helpers\Statuses;
 use Helldar\CashierDriver\SberAuth\DTO\Client;
@@ -52,7 +52,7 @@ class Driver extends BaseDriver
             $this->headers($this->scope_status)
         );
 
-        return $this->request($request);
+        return $this->request($request, false);
     }
 
     public function refund(): Response
