@@ -33,7 +33,7 @@ class Driver extends BaseDriver
     {
         $request = $this->requestDto(
             $this->url($this->uri_create),
-            $this->map->toArray(),
+            $this->resource->toArray(),
             $this->headers($this->scope_create)
         );
 
@@ -45,7 +45,7 @@ class Driver extends BaseDriver
         $request = $this->requestDto(
             $this->url($this->uri_status),
             [
-                'rq_tm' => $this->map->getNow(),
+                'rq_tm' => $this->resource->getNow(),
 
                 'order_id' => $this->model->details->details->payment_id,
             ],
@@ -62,7 +62,7 @@ class Driver extends BaseDriver
             [
                 'rq_uid' => $this->auth->getClientId(),
 
-                'rq_tm' => $this->map->getNow(),
+                'rq_tm' => $this->resource->getNow(),
 
                 'order_id' => $this->model->details->details->payment_id,
             ],
@@ -81,7 +81,7 @@ class Driver extends BaseDriver
 
             'X-IBM-Client-Id' => $this->auth->getClientId(),
 
-            'x-Introspect-RqUID' => $this->map->getTerminalId(),
+            'x-Introspect-RqUID' => $this->resource->getTerminalId(),
         ];
     }
 
@@ -99,9 +99,9 @@ class Driver extends BaseDriver
             ->host($this->host())
             ->clientId($this->auth->getClientId())
             ->clientSecret($this->auth->getClientSecret())
-            ->memberId($this->map->getMemberId())
-            ->paymentId($this->map->getPaymentId())
-            ->uniqueId($this->map->getUniqueId());
+            ->memberId($this->resource->getMemberId())
+            ->paymentId($this->resource->getPaymentId())
+            ->uniqueId($this->resource->getUniqueId());
     }
 
     protected function requestDto(string $url, array $data, array $headers): Request
