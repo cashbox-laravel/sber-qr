@@ -22,7 +22,7 @@
     },
     "require": {
         "php": "^7.2.5|^8.0",
-        "andrey-helldar/cashier-sber-auth": "v1.0-RC2"
+        "andrey-helldar/cashier-sber-auth": "dev-main"
     },
     "require-dev": {
         "andrey-helldar/cashier": "dev-main",
