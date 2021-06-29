@@ -1,6 +1,6 @@
 <?php
 
-namespace Helldar\CashierDriver\Sber\QR\Requests;
+namespace Helldar\CashierDriver\Sber\QR\Resources;
 
 use Helldar\Cashier\Requests\Payment as BasePayment;
 
