@@ -2,7 +2,7 @@
 
 namespace Helldar\CashierDriver\Sber\QR\Resources;
 
-use Helldar\Cashier\Requests\Payment as BasePayment;
+use Helldar\Cashier\Resources\Payment as BasePayment;
 
 abstract class Payment extends BasePayment
 {
