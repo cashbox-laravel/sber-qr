@@ -4,7 +4,7 @@ namespace Helldar\CashierDriver\Sber\QR\Helpers;
 
 use Helldar\Cashier\Helpers\Statuses as BaseStatus;
 
-final class Statuses extends BaseStatus
+class Statuses extends BaseStatus
 {
     public const NEW = [
         'CREATED',

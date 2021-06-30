@@ -4,7 +4,7 @@ namespace Helldar\CashierDriver\Sber\QR\Resources;
 
 use Helldar\Cashier\Resources\Response as Base;
 
-final class Response extends Base
+class Response extends Base
 {
     protected $map = [];
 
