@@ -29,7 +29,7 @@ class Driver extends BaseDriver
 
     protected $scope_cancel = 'https://api.sberbank.ru/order.revoke';
 
-    public function init(): Response
+    public function start(): Response
     {
         $request = $this->requestDto(
             $this->url($this->uri_create),
