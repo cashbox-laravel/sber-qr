@@ -60,7 +60,7 @@ class Driver extends BaseDriver
         $request = $this->requestDto(
             $this->url($this->uri_revocation),
             [
-                'rq_uid' => $this->auth->getClientId(),
+                'rq_uid' => $this->resource->getUniqueId(),
 
                 'rq_tm' => $this->resource->getNow(),
 
@@ -81,7 +81,7 @@ class Driver extends BaseDriver
 
             'X-IBM-Client-Id' => $this->auth->getClientId(),
 
-            'x-Introspect-RqUID' => $this->resource->getTerminalId(),
+            'x-Introspect-RqUID' => $this->resource->getUniqueId(),
         ];
     }
 
@@ -100,8 +100,7 @@ class Driver extends BaseDriver
             ->clientId($this->auth->getClientId())
             ->clientSecret($this->auth->getClientSecret())
             ->memberId($this->resource->getMemberId())
-            ->paymentId($this->resource->getPaymentId())
-            ->uniqueId($this->resource->getUniqueId());
+            ->paymentId($this->resource->getPaymentId());
     }
 
     protected function requestDto(string $url, array $data, array $headers): Request

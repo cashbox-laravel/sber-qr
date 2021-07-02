@@ -9,7 +9,8 @@ abstract class Request extends BasePayment
     public function toArray(): array
     {
         return [
-            'rq_tm' => $this->getNow(),
+            'rq_uid' => $this->getUniqueId(),
+            'rq_tm'  => $this->getNow(),
 
             'member_id' => $this->getMemberId(),
             'id_qr'     => $this->getTerminalId(),
