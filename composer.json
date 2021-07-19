@@ -31,7 +31,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Helldar\\CashierDriver\\Sber\\QR\\": "src"
+            "Helldar\\CashierDriver\\Sber\\QrCode\\": "src"
         }
     },
     "autoload-dev": {

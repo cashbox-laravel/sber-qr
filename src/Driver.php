@@ -1,6 +1,6 @@
 <?php
 
-namespace Helldar\CashierDriver\Sber\QR;
+namespace Helldar\CashierDriver\Sber\QrCode;
 
 use Helldar\Cashier\DTO\Request;
 use Helldar\Cashier\Resources\Response;
