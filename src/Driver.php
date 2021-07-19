@@ -50,7 +50,7 @@ class Driver extends BaseDriver
             [
                 'rq_tm' => $this->resource->getNow(),
 
-                'order_id' => $this->model->cashier->details->payment_id,
+                'order_id' => $this->model->cashier->payment_id,
             ],
             $this->headers($this->scope_status)
         );
@@ -67,7 +67,7 @@ class Driver extends BaseDriver
 
                 'rq_tm' => $this->resource->getNow(),
 
-                'order_id' => $this->model->cashier->details->payment_id,
+                'order_id' => $this->model->cashier->payment_id,
             ],
             $this->headers($this->scope_cancel)
         );
