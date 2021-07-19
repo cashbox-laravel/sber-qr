@@ -37,7 +37,7 @@ Or manually update `require` block of `composer.json` and run `composer update`.
 namespace App\Cashier\BankName\Requests;
 
 use Carbon\Carbon;
-use Helldar\CashierDriver\Sber\QR\Requests\Payment as Base;
+use Helldar\CashierDriver\Sber\QrCode\Requests\Payment as Base;
 
 class Payment extends Base
 {
@@ -66,26 +66,26 @@ use Helldar\Cashier\Constants\Status;
 return [
     'payments' => [
         'model' => App\Models\Payment::class,
-        
+
         'attributes' => [
             'type'     => 'type_id',
             'status'   => 'status_id',
             'sum'      => 'sum',
             'currency' => 'currency'
         ],
-    
+
         'statuses' => [
             Status::NEW => Model::STATUS_NEW,
-    
+
             Status::SUCCESS => Model::STATUS_SUCCESS,
-    
+
             Status::FAILED => Model::STATUS_FAILED,
-    
+
             Status::REFUND => Model::STATUS_REFUND,
-    
+
             Status::WAIT_REFUND => Model::STATUS_WAIT_REFUND,
         ],
-        
+
         'assign_drivers' => [
             Model::PAYMENT_TYPE_1 => 'sber_qr',
         ],
@@ -93,7 +93,7 @@ return [
 
     'drivers' => [
         'sber_qr' => [
-            'driver' => Helldar\CashierDriver\Sber\QR\Driver::class,
+            'driver' => Helldar\CashierDriver\Sber\QrCode\Driver::class,
 
             'request' => App\Cashier\BankName\Requests\Payment::class,
 

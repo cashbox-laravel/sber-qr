@@ -5,13 +5,15 @@ namespace Helldar\CashierDriver\Sber\QrCode;
 use Helldar\Cashier\DTO\Request;
 use Helldar\Cashier\Resources\Response;
 use Helldar\Cashier\Services\Driver as BaseDriver;
-use Helldar\CashierDriver\Sber\QR\Helpers\Statuses;
+use Helldar\CashierDriver\Sber\QrCode\Helpers\Statuses;
 use Helldar\CashierDriver\SberAuth\DTO\Client;
 use Helldar\CashierDriver\SberAuth\Facades\Auth;
 
 class Driver extends BaseDriver
 {
     protected $statuses = Statuses::class;
+
+    protected $response = Resources\Response::class;
 
     protected $production_host = 'https://api.sberbank.ru';
 
@@ -47,7 +49,7 @@ class Driver extends BaseDriver
             [
                 'rq_tm' => $this->resource->getNow(),
 
-                'order_id' => $this->model->details->details->payment_id,
+                'order_id' => $this->model->cashier->details->payment_id,
             ],
             $this->headers($this->scope_status)
         );
@@ -64,7 +66,7 @@ class Driver extends BaseDriver
 
                 'rq_tm' => $this->resource->getNow(),
 
-                'order_id' => $this->model->details->details->payment_id,
+                'order_id' => $this->model->cashier->details->payment_id,
             ],
             $this->headers($this->scope_cancel)
         );
@@ -106,7 +108,7 @@ class Driver extends BaseDriver
     protected function requestDto(string $url, array $data, array $headers): Request
     {
         return Request::make()
-            ->setUri($url)
+            ->setUrl($url)
             ->setData($data)
             ->setHeaders($headers);
     }
