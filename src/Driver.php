@@ -8,6 +8,7 @@ use Helldar\Cashier\Services\Driver as BaseDriver;
 use Helldar\CashierDriver\Sber\QrCode\Helpers\Statuses;
 use Helldar\CashierDriver\SberAuth\DTO\Client;
 use Helldar\CashierDriver\SberAuth\Facades\Auth;
+use Psr\Http\Message\UriInterface;
 
 class Driver extends BaseDriver
 {
@@ -105,7 +106,7 @@ class Driver extends BaseDriver
             ->paymentId($this->resource->getPaymentId());
     }
 
-    protected function requestDto(string $url, array $data, array $headers): Request
+    protected function requestDto(UriInterface $url, array $data, array $headers): Request
     {
         return Request::make()
             ->setUrl($url)
