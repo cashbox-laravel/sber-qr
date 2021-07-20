@@ -34,72 +34,63 @@ Or manually update `require` block of `composer.json` and run `composer update`.
 1. You need to create a new class, for example, `App\Cashier\BankName\Requests\Payment`, and define methods in it:
 
 ```php
-namespace App\Cashier\BankName\Requests;
+namespace App\Cashier\BankName\Payment;
 
 use Carbon\Carbon;
-use Helldar\CashierDriver\Sber\QrCode\Requests\Payment as Base;
+use Helldar\Cashier\Constants\Currency;
+use Helldar\CashierDriver\Sber\QrCode\Resources\Request as Base;
 
 class Payment extends Base
 {
-    protected function terminalId(): string { }
+    protected function terminalId(): string
+    {
+        return $this->model->order->unit->settings->sber->terminal_id;
+    }
 
-    protected function memberId(): string { }
+    protected function memberId(): string
+    {
+        return $this->model->order->unit->settings->sber->member_id;
+    }
 
-    protected function uniqueId(): string { }
+    protected function paymentId(): string
+    {
+        return $this->model->id;
+    }
 
-    protected function paymentId(): string { }
+    protected function sum(): float
+    {
+        return $this->model->sum;
+    }
 
-    protected function sum(): float { }
+    protected function currency(): int
+    {
+        return Currency::RUB;
+    }
 
-    protected function currency(): int { }
-
-    protected function createdAt(): Carbon { }
+    protected function createdAt(): Carbon
+    {
+        return $this->model->created_at;
+    }
 }
 ```
 
 2. Configure model and driver in [`config/cashier.php`](https://github.com/andrey-helldar/cashier/blob/main/config/cashier.php) file:
 
 ```php
-use App\Models\Payment as Model;
-use Helldar\Cashier\Constants\Status;
-
 return [
-    'payments' => [
-        'model' => App\Models\Payment::class,
-
-        'attributes' => [
-            'type'     => 'type_id',
-            'status'   => 'status_id',
-            'sum'      => 'sum',
-            'currency' => 'currency'
-        ],
-
-        'statuses' => [
-            Status::NEW => Model::STATUS_NEW,
-
-            Status::SUCCESS => Model::STATUS_SUCCESS,
-
-            Status::FAILED => Model::STATUS_FAILED,
-
-            Status::REFUND => Model::STATUS_REFUND,
-
-            Status::WAIT_REFUND => Model::STATUS_WAIT_REFUND,
-        ],
-
-        'assign_drivers' => [
-            Model::PAYMENT_TYPE_1 => 'sber_qr',
-        ],
-    ],
-
     'drivers' => [
         'sber_qr' => [
             'driver' => Helldar\CashierDriver\Sber\QrCode\Driver::class,
 
-            'request' => App\Cashier\BankName\Requests\Payment::class,
+            'request' => App\Cashier\BankName\Payment::class,
 
             'client_id' => env('CASHIER_SBER_CLIENT_ID'),
 
             'client_secret' => env('CASHIER_SBER_CLIENT_SECRET'),
+
+            'terminal_id' => env('CASHIER_SBER_QR_TERMINAL_ID'),
+
+            'member_id' => env('CASHIER_SBER_QR_MEMBER_ID'),
         ]
     ]
 ];
