@@ -5,9 +5,9 @@ namespace Helldar\CashierDriver\Sber\QrCode;
 use Helldar\Cashier\DTO\Request;
 use Helldar\Cashier\Resources\Response;
 use Helldar\Cashier\Services\Driver as BaseDriver;
+use Helldar\CashierDriver\Sber\Auth\DTO\Client;
+use Helldar\CashierDriver\Sber\Auth\Facades\Auth;
 use Helldar\CashierDriver\Sber\QrCode\Helpers\Statuses;
-use Helldar\CashierDriver\SberAuth\DTO\Client;
-use Helldar\CashierDriver\SberAuth\Facades\Auth;
 use Psr\Http\Message\UriInterface;
 
 class Driver extends BaseDriver
