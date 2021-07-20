@@ -22,7 +22,7 @@
     },
     "require": {
         "php": "^7.2.5|^8.0",
-        "andrey-helldar/cashier-sber-auth": "^1.0",
+        "andrey-helldar/cashier-sber-auth": "^1.0.1",
         "psr/http-message": "^1.0"
     },
     "require-dev": {
