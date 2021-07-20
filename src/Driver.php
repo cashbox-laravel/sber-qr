@@ -79,10 +79,8 @@ class Driver extends BaseDriver
 
     protected function headers(string $scope): array
     {
-        $access_token = $this->accessToken($scope);
-
         return [
-            'Authorization' => 'Bearer ' . $access_token,
+            'Authorization' => 'Bearer ' . $this->accessToken($scope),
 
             'X-IBM-Client-Id' => $this->auth->getClientId(),
 
