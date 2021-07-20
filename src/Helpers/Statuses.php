@@ -13,10 +13,10 @@ class Statuses extends BaseStatus
     public const REFUNDED = [
         'REVERSED',
         'REFUNDED',
+        'REVOKED',
     ];
 
     public const FAILED = [
-        'REVOKED',
     ];
 
     public const SUCCESS = [

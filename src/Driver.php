@@ -48,6 +48,8 @@ class Driver extends BaseDriver
         $request = $this->requestDto(
             $this->url($this->uri_status),
             [
+                'rq_uid' => $this->resource->getUniqueId(),
+
                 'rq_tm' => $this->resource->getNow(),
 
                 'order_id' => $this->model->cashier->payment_id,
