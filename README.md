@@ -77,7 +77,15 @@ class Payment extends Base
 2. Configure model and driver in [`config/cashier.php`](https://github.com/andrey-helldar/cashier/blob/main/config/cashier.php) file:
 
 ```php
+use App\Models\Payment;
+
 return [
+    'payments' => [
+        'assign_drivers' => [
+            Payment::PAYMENT_TYPE_QR_SBERBANK => 'sber_qr',
+        ]
+    ],
+
     'drivers' => [
         'sber_qr' => [
             'driver' => Helldar\CashierDriver\Sber\QrCode\Driver::class,
