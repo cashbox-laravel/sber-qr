@@ -31,10 +31,10 @@ Or manually update `require` block of `composer.json` and run `composer update`.
 
 ## Using
 
-1. You need to create a new class, for example, `App\Cashier\BankName\Requests\Payment`, and define methods in it:
+1. You need to create a new class, for example, `App\Cashier\Sber\Payment`, and define methods in it:
 
 ```php
-namespace App\Cashier\BankName\Payment;
+namespace App\Cashier\Sber;
 
 use Carbon\Carbon;
 use Helldar\Cashier\Constants\Currency;
@@ -90,7 +90,7 @@ return [
         'sber_qr' => [
             'driver' => Helldar\CashierDriver\Sber\QrCode\Driver::class,
 
-            'request' => App\Cashier\BankName\Payment::class,
+            'request' => App\Cashier\Sber\Payment::class,
 
             'client_id' => env('CASHIER_SBER_CLIENT_ID'),
 
