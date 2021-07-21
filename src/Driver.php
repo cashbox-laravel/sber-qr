@@ -7,6 +7,7 @@ use Helldar\Cashier\Resources\Response;
 use Helldar\Cashier\Services\Driver as BaseDriver;
 use Helldar\CashierDriver\Sber\Auth\DTO\Client;
 use Helldar\CashierDriver\Sber\Auth\Facades\Auth;
+use Helldar\CashierDriver\Sber\QrCode\Helpers\Exception;
 use Helldar\CashierDriver\Sber\QrCode\Helpers\Statuses;
 use Psr\Http\Message\UriInterface;
 
@@ -15,6 +16,8 @@ class Driver extends BaseDriver
     protected $statuses = Statuses::class;
 
     protected $response = Resources\Response::class;
+
+    protected $exception = Exception::class;
 
     protected $production_host = 'https://api.sberbank.ru';
 
