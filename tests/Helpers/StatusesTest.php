@@ -38,8 +38,6 @@ class StatusesTest extends TestCase
 
         $this->assertFalse($this->status('UNKNOWN', 7)->hasCreated());
 
-        //
-
         $this->assertTrue($this->status('UNKNOWN', 7)->hasCreated('CREATED'));
 
         $this->assertFalse($this->status('UNKNOWN', 7)->hasCreated('REVERSED'));
@@ -62,8 +60,6 @@ class StatusesTest extends TestCase
         $this->assertTrue($this->status('PAID', 1)->hasSuccess());
 
         $this->assertFalse($this->status('UNKNOWN', 7)->hasSuccess());
-
-        //
 
         $this->assertFalse($this->status('UNKNOWN', 7)->hasSuccess('CREATED'));
 
@@ -88,8 +84,6 @@ class StatusesTest extends TestCase
 
         $this->assertFalse($this->status('UNKNOWN', 7)->hasFailed());
 
-        //
-
         $this->assertFalse($this->status('UNKNOWN', 7)->hasFailed('CREATED'));
 
         $this->assertFalse($this->status('UNKNOWN', 7)->hasFailed('REVERSED'));
@@ -112,8 +106,6 @@ class StatusesTest extends TestCase
         $this->assertFalse($this->status('PAID', 1)->hasRefunding());
 
         $this->assertFalse($this->status('UNKNOWN', 7)->hasRefunding());
-
-        //
 
         $this->assertFalse($this->status('UNKNOWN', 7)->hasRefunding('CREATED'));
 
@@ -138,8 +130,6 @@ class StatusesTest extends TestCase
 
         $this->assertFalse($this->status('UNKNOWN', 7)->hasRefunded());
 
-        //
-
         $this->assertFalse($this->status('UNKNOWN', 7)->hasRefunded('CREATED'));
 
         $this->assertTrue($this->status('UNKNOWN', 7)->hasRefunded('REVERSED'));
@@ -162,8 +152,6 @@ class StatusesTest extends TestCase
         $this->assertFalse($this->status('PAID', 1)->inProgress());
 
         $this->assertFalse($this->status('UNKNOWN', 7)->inProgress());
-
-        //
 
         $this->assertTrue($this->status('UNKNOWN', 7)->inProgress('CREATED'));
 
