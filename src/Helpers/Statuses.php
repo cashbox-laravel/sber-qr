@@ -1,8 +1,23 @@
 <?php
 
+/*
+ * This file is part of the "andrey-helldar/cashier-sber-qr" project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @author Andrey Helldar <helldar@ai-rus.com>
+ *
+ * @copyright 2021 Andrey Helldar
+ *
+ * @license MIT
+ *
+ * @see https://github.com/andrey-helldar/cashier-sber-qr
+ */
+
 namespace Helldar\CashierDriver\Sber\QrCode\Helpers;
 
-use Helldar\Cashier\Helpers\Statuses as BaseStatus;
+use Helldar\Cashier\Services\Statuses as BaseStatus;
 
 class Statuses extends BaseStatus
 {
@@ -10,14 +25,15 @@ class Statuses extends BaseStatus
         'CREATED',
     ];
 
+    public const REFUNDING = [];
+
     public const REFUNDED = [
         'REVERSED',
         'REFUNDED',
         'REVOKED',
     ];
 
-    public const FAILED = [
-    ];
+    public const FAILED = [];
 
     public const SUCCESS = [
         'PAID',

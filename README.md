@@ -9,10 +9,6 @@ Cashier provides an expressive, fluent interface to manage billing services.
 
 ## Installation
 
-> Note!
->
-> For this driver to work, you first need to [`andrey-helldar/cashier`](https://github.com/andrey-helldar/cashier) install.
-
 To get the latest version of `Sber QR Cashier Driver`, simply require the project using [Composer](https://getcomposer.org):
 
 ```bash
@@ -31,74 +27,77 @@ Or manually update `require` block of `composer.json` and run `composer update`.
 
 ## Using
 
-1. You need to create a new class, for example, `App\Cashier\Sber\Payment`, and define methods in it:
+> See [parent](https://github.com/andrey-helldar/cashier#readme) project.
+
+Create resource file:
 
 ```php
-namespace App\Cashier\Sber;
+namespace App\Payments;
 
-use Carbon\Carbon;
-use Helldar\Cashier\Constants\Currency;
-use Helldar\CashierDriver\Sber\QrCode\Resources\Request as Base;
+use Helldar\Cashier\Resources\Model;
 
-class Payment extends Base
+class Sber extends Model
 {
-    protected function terminalId(): string
-    {
-        return $this->model->order->unit->settings->sber->terminal_id;
-    }
-
-    protected function memberId(): string
-    {
-        return $this->model->order->unit->settings->sber->member_id;
-    }
-
     protected function paymentId(): string
     {
-        return $this->model->id;
+        return (string) $this->model->id;
     }
 
     protected function sum(): float
     {
-        return $this->model->sum;
+        return (float) $this->model->sum;
     }
 
     protected function currency(): int
     {
-        return Currency::RUB;
+        return $this->model->currency;
     }
 
     protected function createdAt(): Carbon
     {
         return $this->model->created_at;
     }
+    
+    public function getMemberId(): string
+    {
+        return config('cashier.drivers.sber_qr.member_id');
+    }
+    
+    public function getTerminalId(): string
+    {
+        return config('cashier.drivers.sber_qr.terminal_id');
+    }
 }
 ```
 
-2. Configure model and driver in [`config/cashier.php`](https://github.com/andrey-helldar/cashier/blob/main/config/cashier.php) file:
+Edit the `config/cashier.php` file:
 
 ```php
 use App\Models\Payment;
+use App\Payments\Sber as SberDetails;
+use Helldar\Cashier\Constants\Driver;
+use Helldar\CashierDriver\Sber\QrCode\Driver as SberQrDriver;
 
 return [
-    'payments' => [
-        'assign_drivers' => [
-            Payment::PAYMENT_TYPE_QR_SBERBANK => 'sber_qr',
+    //
+
+    'payment' => [
+        'map' => [
+            Payment::TYPE_SBER => 'sber_qr'
         ]
     ],
 
     'drivers' => [
         'sber_qr' => [
-            'driver' => Helldar\CashierDriver\Sber\QrCode\Driver::class,
+            Driver::DRIVER => SberQrDriver::class,
 
-            'request' => App\Cashier\Sber\Payment::class,
+            Driver::DETAILS => SberDetails::class,
 
-            'client_id' => env('CASHIER_SBER_CLIENT_ID'),
+            Driver::CLIENT_ID       => env('CASHIER_SBER_QR_CLIENT_ID'),
+            Driver::CLIENT_SECRET   => env('CASHIER_SBER_QR_CLIENT_SECRET'),
 
-            'client_secret' => env('CASHIER_SBER_CLIENT_SECRET'),
-
+            'member_id'   => env('CASHIER_SBER_QR_MEMBER_ID'),
             'terminal_id' => env('CASHIER_SBER_QR_TERMINAL_ID'),
-
-            'member_id' => env('CASHIER_SBER_QR_MEMBER_ID'),
         ]
     ]
 ];
@@ -108,9 +107,9 @@ return [
 
 Available as part of the Tidelift Subscription.
 
-The maintainers of `andrey-helldar/cashier` and thousands of other packages are working with Tidelift to deliver commercial support and maintenance for the open source packages you
-use to build your applications. Save time, reduce risk, and improve code health, while paying the maintainers of the exact packages you
-use. [Learn more](https://tidelift.com/subscription/pkg/packagist-andrey-helldar-cashier?utm_source=packagist-andrey-helldar-cashier&utm_medium=referral&utm_campaign=enterprise&utm_term=repo)
+The maintainers of `andrey-helldar/cashier-sber-qr` and thousands of other packages are working with Tidelift to deliver commercial support and maintenance for the open source
+packages you use to build your applications. Save time, reduce risk, and improve code health, while paying the maintainers of the exact packages you
+use. [Learn more](https://tidelift.com/subscription/pkg/packagist-andrey-helldar-cashier-sber-qr?utm_source=packagist-andrey-helldar-cashier-sber&utm_medium=referral&utm_campaign=enterprise&utm_term=repo)
 .
 
 [badge_downloads]:      https://img.shields.io/packagist/dt/andrey-helldar/cashier-sber-qr.svg?style=flat-square

@@ -1,119 +1,60 @@
 <?php
 
+/*
+ * This file is part of the "andrey-helldar/cashier-sber-qr" project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @author Andrey Helldar <helldar@ai-rus.com>
+ *
+ * @copyright 2021 Andrey Helldar
+ *
+ * @license MIT
+ *
+ * @see https://github.com/andrey-helldar/cashier-sber-qr
+ */
+
 namespace Helldar\CashierDriver\Sber\QrCode;
 
-use Helldar\Cashier\DTO\Request;
-use Helldar\Cashier\Resources\Response;
 use Helldar\Cashier\Services\Driver as BaseDriver;
-use Helldar\CashierDriver\Sber\Auth\DTO\Client;
-use Helldar\CashierDriver\Sber\Auth\Facades\Auth;
-use Helldar\CashierDriver\Sber\QrCode\Helpers\Exception;
+use Helldar\CashierDriver\Sber\QrCode\Exceptions\Manager;
 use Helldar\CashierDriver\Sber\QrCode\Helpers\Statuses;
-use Psr\Http\Message\UriInterface;
+use Helldar\CashierDriver\Sber\QrCode\Requests\Cancel;
+use Helldar\CashierDriver\Sber\QrCode\Requests\Create;
+use Helldar\CashierDriver\Sber\QrCode\Requests\Status;
+use Helldar\CashierDriver\Sber\QrCode\Resources\Details;
+use Helldar\CashierDriver\Sber\QrCode\Responses\QrCode;
+use Helldar\CashierDriver\Sber\QrCode\Responses\Refund;
+use Helldar\CashierDriver\Sber\QrCode\Responses\Status as StatusResponse;
+use Helldar\Contracts\Cashier\Http\Response;
 
 class Driver extends BaseDriver
 {
+    protected $exceptions = Manager::class;
+
     protected $statuses = Statuses::class;
 
-    protected $response = Resources\Response::class;
-
-    protected $exception = Exception::class;
-
-    protected $production_host = 'https://api.sberbank.ru';
-
-    protected $dev_host = 'https://dev.api.sberbank.ru';
-
-    protected $uri_create = '/ru/prod/order/v1/creation';
-
-    protected $uri_status = '/ru/prod/order/v1/status';
-
-    protected $uri_revocation = '/ru/prod/order/v1/revocation';
-
-    protected $scope_create = 'https://api.sberbank.ru/order.create';
-
-    protected $scope_status = 'https://api.sberbank.ru/order.status';
-
-    protected $scope_cancel = 'https://api.sberbank.ru/order.revoke';
+    protected $details = Details::class;
 
     public function start(): Response
     {
-        $request = $this->requestDto(
-            $this->url($this->uri_create),
-            $this->resource->toArray(),
-            $this->headers($this->scope_create)
-        );
+        $request = Create::make($this->model);
 
-        return $this->request($request);
+        return $this->request($request, QrCode::class);
     }
 
     public function check(): Response
     {
-        $request = $this->requestDto(
-            $this->url($this->uri_status),
-            [
-                'rq_uid' => $this->resource->getUniqueId(),
+        $request = Status::make($this->model);
 
-                'rq_tm' => $this->resource->getNow(),
-
-                'order_id' => $this->model->cashier->payment_id,
-            ],
-            $this->headers($this->scope_status)
-        );
-
-        return $this->request($request, false);
+        return $this->request($request, StatusResponse::class);
     }
 
     public function refund(): Response
     {
-        $request = $this->requestDto(
-            $this->url($this->uri_revocation),
-            [
-                'rq_uid' => $this->resource->getUniqueId(),
+        $request = Cancel::make($this->model);
 
-                'rq_tm' => $this->resource->getNow(),
-
-                'order_id' => $this->model->cashier->payment_id,
-            ],
-            $this->headers($this->scope_cancel)
-        );
-
-        return $this->request($request);
-    }
-
-    protected function headers(string $scope): array
-    {
-        return [
-            'Authorization' => 'Bearer '.$this->accessToken($scope),
-
-            'X-IBM-Client-Id' => $this->auth->getClientId(),
-
-            'x-Introspect-RqUID' => $this->resource->getUniqueId(),
-        ];
-    }
-
-    protected function accessToken(string $scope): string
-    {
-        $auth = $this->authDto($scope);
-
-        return Auth::accessToken($auth);
-    }
-
-    protected function authDto(string $scope): Client
-    {
-        return Client::make()
-            ->scope($scope)
-            ->host($this->host())
-            ->clientId($this->auth->getClientId())
-            ->clientSecret($this->auth->getClientSecret())
-            ->memberId($this->resource->getMemberId())
-            ->paymentId($this->resource->getPaymentId());
-    }
-
-    protected function requestDto(UriInterface $url, array $data, array $headers): Request
-    {
-        return Request::make()
-            ->setUrl($url)
-            ->setData($data)
-            ->setHeaders($headers);
+        return $this->request($request, Refund::class);
     }
 }

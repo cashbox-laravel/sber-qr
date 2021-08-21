@@ -4,6 +4,8 @@
     "type": "library",
     "license": "MIT",
     "keywords": [
+        "andrey-helldar",
+        "helldar",
         "bank",
         "billing",
         "cashier",
@@ -21,12 +23,16 @@
         "source": "https://github.com/andrey-helldar/cashier-sber-qr"
     },
     "require": {
-        "php": "^7.2.5|^8.0",
-        "andrey-helldar/cashier-sber-auth": "dev-main",
+        "php": "^7.3|^8.0",
+        "andrey-helldar/cashier-sber-auth": "^1.0",
         "psr/http-message": "^1.0"
     },
     "require-dev": {
-        "andrey-helldar/cashier": "^1.0",
+        "ext-json": "*",
+        "andrey-helldar/cashier": "^1.3",
+        "andrey-helldar/support": "^4.1",
+        "illuminate/database": "^6.0|^7.0|^8.0",
+        "orchestra/testbench": "^4.0|^5.0|^6.0",
         "phpunit/phpunit": "^9.0",
         "symfony/var-dumper": "^4.0|^5.0"
     },
