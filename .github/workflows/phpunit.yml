@@ -8,9 +8,10 @@ jobs:
         strategy:
             fail-fast: true
             matrix:
-                php: [ "7.2", "7.3", "7.4", "8.0" ]
+                php: [ "7.3", "7.4", "8.0" ]
+                laravel: [ "6.0", "7.0", "8.0" ]
 
-        name: PHP ${{ matrix.php }}
+        name: PHP ${{ matrix.php }}, Laravel ${{ matrix.laravel }}
 
         steps:
             -   name: Checkout code
@@ -23,11 +24,14 @@ jobs:
                     extensions: curl, mbstring, zip, pcntl, pdo, pdo_sqlite, iconv, bcmath
                     coverage: none
 
-            -   name: Composer self update
-                run: composer self-update
+            -   name: Store environment variables
+                run: |
+                    echo "CASHIER_SBER_QR_CLIENT_ID=${{ secrets.CASHIER_SBER_QR_CLIENT_ID }}" >> .env
+                    echo "CASHIER_SBER_QR_CLIENT_SECRET=${{ secrets.CASHIER_SBER_QR_CLIENT_SECRET }}" >> .env
+                    echo "CASHIER_SBER_QR_MEMBER_ID=${{ secrets.CASHIER_SBER_QR_MEMBER_ID }}" >> .env
 
             -   name: Install dependencies
-                run: composer update --prefer-stable --prefer-dist --no-progress --no-interaction
+                run: composer require laravel/framework:^${{ matrix.laravel }} --prefer-stable --prefer-dist --no-progress --no-interaction
 
             -   name: Execute tests
                 run: sudo vendor/bin/phpunit

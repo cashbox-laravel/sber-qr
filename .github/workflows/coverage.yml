@@ -22,8 +22,11 @@ jobs:
                     extensions: curl, mbstring, zip, pcntl, pdo, pdo_sqlite, iconv, bcmath
                     coverage: xdebug
 
-            -   name: Composer self update
-                run: composer self-update
+            -   name: Store environment variables
+                run: |
+                    echo "CASHIER_SBER_QR_CLIENT_ID=${{ secrets.CASHIER_SBER_QR_CLIENT_ID }}" >> .env
+                    echo "CASHIER_SBER_QR_CLIENT_SECRET=${{ secrets.CASHIER_SBER_QR_CLIENT_SECRET }}" >> .env
+                    echo "CASHIER_SBER_QR_MEMBER_ID=${{ secrets.CASHIER_SBER_QR_MEMBER_ID }}" >> .env
 
             -   name: Install dependencies
                 run: composer update --prefer-stable --prefer-dist --no-progress --no-interaction
