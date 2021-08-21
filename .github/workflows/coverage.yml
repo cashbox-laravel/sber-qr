@@ -27,6 +27,7 @@ jobs:
                     echo "CASHIER_SBER_QR_CLIENT_ID=${{ secrets.CASHIER_SBER_QR_CLIENT_ID }}" >> .env
                     echo "CASHIER_SBER_QR_CLIENT_SECRET=${{ secrets.CASHIER_SBER_QR_CLIENT_SECRET }}" >> .env
                     echo "CASHIER_SBER_QR_MEMBER_ID=${{ secrets.CASHIER_SBER_QR_MEMBER_ID }}" >> .env
+                    echo "CASHIER_SBER_QR_TERMINAL_ID=${{ secrets.CASHIER_SBER_QR_TERMINAL_ID }}" >> .env
 
             -   name: Install dependencies
                 run: composer update --prefer-stable --prefer-dist --no-progress --no-interaction
