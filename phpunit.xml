@@ -35,6 +35,7 @@
         <env name="DB_CONNECTION" value="testing"/>
         <env name="DB_DATABASE" value=":memory:"/>
         <env name="QUEUE_CONNECTION" value="sync"/>
+        <env name="CACHE_DRIVER" value="file"/>
     </php>
     <coverage processUncoveredFiles="true">
         <include>
