@@ -55,13 +55,27 @@ class ObserverTest extends TestCase
             PaymentConfig::getStatuses()->getStatus(Status::SUCCESS),
             $payment->status_id
         );
-
-        return $payment;
     }
 
     public function testUpdate()
     {
-        $payment = $this->testCreate();
+        $this->assertSame(0, DB::table('payments')->count());
+        $this->assertSame(0, DB::table('cashier_details')->count());
+
+        $payment = $this->payment();
+
+        $this->assertSame(1, DB::table('payments')->count());
+        $this->assertSame(1, DB::table('cashier_details')->count());
+
+        $this->assertIsString($payment->cashier->external_id);
+        $this->assertMatchesRegularExpression('/^(\d+)$/', $payment->cashier->external_id);
+
+        $this->assertSame('PAID', $payment->cashier->details->getStatus());
+
+        $this->assertSame(
+            PaymentConfig::getStatuses()->getStatus(Status::SUCCESS),
+            $payment->status_id
+        );
 
         $payment->update([
             'sum' => 34.56,
