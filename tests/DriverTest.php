@@ -66,10 +66,10 @@ class DriverTest extends TestCase
         $this->assertIsString($response->getExternalId());
         $this->assertMatchesRegularExpression('/^(\d+)$/', $response->getExternalId());
 
-        $this->assertSame(self::STATUS, $response->getStatus());
+        $this->assertSame('PAID', $response->getStatus());
 
         $this->assertSame([
-            'status' => self::STATUS,
+            'status' => 'PAID',
         ], $response->toArray());
     }
 

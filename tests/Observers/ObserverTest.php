@@ -20,7 +20,6 @@ use Helldar\Cashier\Constants\Status;
 use Helldar\Cashier\Facades\Config\Payment as PaymentConfig;
 use Helldar\Cashier\Providers\ObserverServiceProvider;
 use Helldar\Cashier\Providers\ServiceProvider;
-use Helldar\Support\Facades\Http\Url;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\DB;
 use Tests\Fixtures\Factories\Payment;
@@ -48,12 +47,12 @@ class ObserverTest extends TestCase
         $this->assertIsString($payment->cashier->external_id);
         $this->assertMatchesRegularExpression('/^(\d+)$/', $payment->cashier->external_id);
 
-        $this->assertTrue(Url::is($payment->cashier->details->getUrl()));
+        $this->assertNull($payment->cashier->details->getUrl());
 
-        $this->assertSame('CREATED', $payment->cashier->details->getStatus());
+        $this->assertSame('PAID', $payment->cashier->details->getStatus());
 
         $this->assertSame(
-            PaymentConfig::getStatuses()->getStatus(Status::NEW),
+            PaymentConfig::getStatuses()->getStatus(Status::SUCCESS),
             $payment->status_id
         );
 
@@ -76,12 +75,12 @@ class ObserverTest extends TestCase
         $this->assertIsString($payment->cashier->external_id);
         $this->assertMatchesRegularExpression('/^(\d+)$/', $payment->cashier->external_id);
 
-        $this->assertTrue(Url::is($payment->cashier->details->getUrl()));
+        $this->assertNull($payment->cashier->details->getUrl());
 
-        $this->assertSame('CREATED', $payment->cashier->details->getStatus());
+        $this->assertSame('PAID', $payment->cashier->details->getStatus());
 
         $this->assertSame(
-            PaymentConfig::getStatuses()->getStatus(Status::NEW),
+            PaymentConfig::getStatuses()->getStatus(Status::SUCCESS),
             $payment->status_id
         );
     }
