@@ -73,11 +73,15 @@ abstract class TestCase extends BaseTestCase
         /** @var \Illuminate\Config\Repository $config */
         $config = $app['config'];
 
+        $config->set('cashier.env', env('CASHIER_ENV', env('APP_ENV', 'testing')));
+
         $config->set('cashier.payment.model', $this->model);
 
         $config->set('cashier.payment.map', [
             self::MODEL_TYPE_ID => 'sber_qr',
         ]);
+
+        $is_production = $config->get('cashier.env') === 'production';
 
         $config->set('cashier.drivers.sber_qr', [
             DriverConstant::DRIVER  => Driver::class,
@@ -88,6 +92,10 @@ abstract class TestCase extends BaseTestCase
 
             'member_id'   => env('CASHIER_SBER_QR_MEMBER_ID'),
             'terminal_id' => env('CASHIER_SBER_QR_TERMINAL_ID'),
+
+            DriverConstant::CERTIFICATE_PATH => $is_production ? realpath(__DIR__ . '/../sber.p12') : null,
+
+            DriverConstant::CERTIFICATE_PASSWORD => $is_production ? env('CASHIER_SBER_QR_CERTIFICATE_PASSWORD') : null,
         ]);
     }
 
