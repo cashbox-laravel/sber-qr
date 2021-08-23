@@ -32,6 +32,13 @@ class DriverTest extends TestCase
 
     protected $model = RequestPayment::class;
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->runSeeders();
+    }
+
     public function testStart()
     {
         $response = $this->driver()->start();
@@ -79,13 +86,6 @@ class DriverTest extends TestCase
         $this->assertMatchesRegularExpression('/^(\d+)$/', $response->getExternalId());
 
         $this->assertSame('REVOKED', $response->getStatus());
-    }
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->runSeeders();
     }
 
     protected function driver(): DriverContract
