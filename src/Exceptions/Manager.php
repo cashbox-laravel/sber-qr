@@ -36,5 +36,16 @@ class Manager extends ExceptionManager
         503 => BankInternalErrorException::class,
     ];
 
-    protected $code_keys = ['httpCode'];
+    protected $code_keys = ['httpCode', 'status.error_code'];
+
+    protected $success_keys = [];
+
+    protected $reason_keys = ['moreInformation', 'httpMessage', 'Message', 'status.error_description'];
+
+    protected function isFailedContentCode(array $response): bool
+    {
+        $code = $this->getCodeByResponseContent($response);
+
+        return ! is_null($code) && $code !== 0;
+    }
 }

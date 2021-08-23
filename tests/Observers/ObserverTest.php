@@ -32,7 +32,7 @@ class ObserverTest extends TestCase
 
     protected $model = RequestPayment::class;
 
-    public function testCreate(): RequestPayment
+    public function testCreate()
     {
         $this->assertSame(0, DB::table('payments')->count());
         $this->assertSame(0, DB::table('cashier_details')->count());
