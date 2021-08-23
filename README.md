@@ -92,6 +92,9 @@ return [
             Driver::DRIVER => SberQrDriver::class,
 
             Driver::DETAILS => SberDetails::class,
+            
+            Driver::CERTIFICATE_PATH => env('CASHIER_SBER_QR_CERTIFICATE_PATH'),
+            Driver::CERTIFICATE_PASSWORD => env('CASHIER_SBER_QR_CERTIFICATE_PASSWORD'),
 
             Driver::CLIENT_ID       => env('CASHIER_SBER_QR_CLIENT_ID'),
             Driver::CLIENT_SECRET   => env('CASHIER_SBER_QR_CLIENT_SECRET'),
