@@ -5,7 +5,10 @@ vendor/
 
 .env
 
-sber.pem
+*.p12
+*.pem
+*.crt
+*.key
 
 *.bak
 *.cache
