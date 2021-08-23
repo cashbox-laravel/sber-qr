@@ -5,6 +5,8 @@ vendor/
 
 .env
 
+sber.pem
+
 *.bak
 *.cache
 *.clover
