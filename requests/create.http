@@ -1,0 +1,36 @@
+POST {{host}}/ru/prod/tokens/v2/oauth
+Accept: application/json
+Content-Type: application/json
+X-IBM-Client-Id: {{client_id}}
+RqUID: {{unique_id}}
+Authorization: Bearer {{access_token}}
+
+{
+    "rq_uid": "{{unique_id}}",
+    "rq_tm": "2021-08-23T17:59:00Z",
+    "member_id": "{{member_id}}",
+    "id_qr": "{{terminal_id}}",
+    "order_number": "1234",
+    "order_sum": 100,
+    "order_create_date": "2021-08-23T17:59:00Z",
+    "currency": "643"
+}
+
+###
+POST https://dev.api.sberbank.ru/ru/prod/tokens/v2/oauth
+Accept: application/json
+Content-Type: application/json
+X-IBM-Client-Id: 5b0444a4-cce4-4401-8dbd-3be166fcac4f
+RqUID: c6cf60f8368c3d921b17b49e353f2dee
+Authorization: Bearer 06e4a4ee-c2cc-4e29-b562-673baffd6406
+
+{
+    "rq_uid": "c6cf60f8368c3d921b17b49e353f2dee",
+    "rq_tm": "2021-08-23T17:59:00Z",
+    "member_id": "5678",
+    "id_qr": "1234",
+    "order_number": "1234",
+    "order_sum": 100,
+    "order_create_date": "2021-08-23T17:59:00Z",
+    "currency": "643"
+}

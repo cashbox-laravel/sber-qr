@@ -4,6 +4,7 @@
 .run/ export-ignore
 
 docs/ export-ignore
+requests/ export-ignore
 tests/ export-ignore
 
 .codecov.yml export-ignore
