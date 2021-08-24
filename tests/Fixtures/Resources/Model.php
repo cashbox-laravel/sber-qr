@@ -17,7 +17,7 @@
 
 namespace Tests\Fixtures\Resources;
 
-use Helldar\Cashier\Resources\Model as BaseModel;
+use Helldar\CashierDriver\Sber\QrCode\Resources\Model as BaseModel;
 use Illuminate\Support\Carbon;
 
 /** @property \Tests\Fixtures\Models\ReadyPayment $model */
@@ -36,6 +36,16 @@ class Model extends BaseModel
     public function getTerminalId(): string
     {
         return config('cashier.drivers.sber_qr.terminal_id');
+    }
+
+    public function getCertificatePath(): ?string
+    {
+        return config('cashier.drivers.sber_qr.certificate_path');
+    }
+
+    public function getCertificatePassword(): ?string
+    {
+        return config('cashier.drivers.sber_qr.certificate_password');
     }
 
     protected function paymentId(): string

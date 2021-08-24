@@ -93,9 +93,9 @@ abstract class TestCase extends BaseTestCase
             'member_id'   => env('CASHIER_SBER_QR_MEMBER_ID'),
             'terminal_id' => env('CASHIER_SBER_QR_TERMINAL_ID'),
 
-            DriverConstant::CERTIFICATE_PATH => $is_production ? realpath(__DIR__ . '/../sber.p12') : null,
+            'certificate_path' => $is_production ? realpath(__DIR__ . '/../sber.pem') : null,
 
-            DriverConstant::CERTIFICATE_PASSWORD => $is_production ? env('CASHIER_SBER_QR_CERTIFICATE_PASSWORD') : null,
+            'certificate_password' => $is_production ? env('CASHIER_SBER_QR_CERTIFICATE_PASSWORD') : null,
         ]);
     }
 

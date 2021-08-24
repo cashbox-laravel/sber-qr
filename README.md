@@ -34,7 +34,7 @@ Create resource file:
 ```php
 namespace App\Payments;
 
-use Helldar\Cashier\Resources\Model;
+use Helldar\CashierDriver\Sber\QrCode\Resources\Model;
 
 class Sber extends Model
 {
@@ -57,16 +57,28 @@ class Sber extends Model
     {
         return $this->model->created_at;
     }
-    
+
     public function getMemberId(): string
     {
         return config('cashier.drivers.sber_qr.member_id');
     }
-    
+
     public function getTerminalId(): string
     {
         return config('cashier.drivers.sber_qr.terminal_id');
     }
+
+    public function getCertificatePath(): ?string
+    {
+        return config('cashier.drivers.sber_qr.certificate_path');
+    }
+
+    public function getCertificatePassword(): ?string
+    {
+        return config('cashier.drivers.sber_qr.certificate_password');
+    }
+
+
 }
 ```
 
@@ -92,15 +104,16 @@ return [
             Driver::DRIVER => SberQrDriver::class,
 
             Driver::DETAILS => SberDetails::class,
-            
-            Driver::CERTIFICATE_PATH => env('CASHIER_SBER_QR_CERTIFICATE_PATH'),
-            Driver::CERTIFICATE_PASSWORD => env('CASHIER_SBER_QR_CERTIFICATE_PASSWORD'),
 
             Driver::CLIENT_ID       => env('CASHIER_SBER_QR_CLIENT_ID'),
             Driver::CLIENT_SECRET   => env('CASHIER_SBER_QR_CLIENT_SECRET'),
 
             'member_id'   => env('CASHIER_SBER_QR_MEMBER_ID'),
             'terminal_id' => env('CASHIER_SBER_QR_TERMINAL_ID'),
+
+            'certificate_path' => storage_path('certificates/sber.pem'),
+
+            'certificate_password' => env('CASHIER_SBER_QR_CERTIFICATE_PASSWORD'),
         ]
     ]
 ];
