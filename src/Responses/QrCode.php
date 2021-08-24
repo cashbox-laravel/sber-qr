@@ -37,4 +37,9 @@ class QrCode extends Response
     {
         return $this->value(self::KEY_URL);
     }
+
+    public function isEmpty(): bool
+    {
+        return empty($this->getExternalId()) || empty($this->getUrl());
+    }
 }

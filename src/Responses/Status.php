@@ -28,4 +28,9 @@ class Status extends Response
 
         self::KEY_STATUS => 'status.order_state',
     ];
+
+    public function isEmpty(): bool
+    {
+        return empty($this->getExternalId()) || empty($this->getStatus());
+    }
 }
