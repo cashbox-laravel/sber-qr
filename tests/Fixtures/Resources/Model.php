@@ -58,7 +58,7 @@ class Model extends BaseModel
         return $this->model->sum;
     }
 
-    protected function currency(): int
+    protected function currency(): string
     {
         return $this->model->currency;
     }

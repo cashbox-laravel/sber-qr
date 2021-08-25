@@ -42,7 +42,7 @@ abstract class TestCase extends BaseTestCase
 
     public const PAYMENT_SUM_FORMATTED = 1234;
 
-    public const CURRENCY = 643;
+    public const CURRENCY = 'RUB';
 
     public const CURRENCY_FORMATTED = '643';
 

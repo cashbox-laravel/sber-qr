@@ -39,7 +39,6 @@ class RequestPayment extends UuidModel
         'type_id'   => 'integer',
         'status_id' => 'integer',
 
-        'sum'      => 'float',
-        'currency' => 'integer',
+        'sum' => 'float',
     ];
 }

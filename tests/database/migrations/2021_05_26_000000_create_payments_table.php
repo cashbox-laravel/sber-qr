@@ -33,7 +33,7 @@ class CreatePaymentsTable extends Migration
 
             $table->double('sum', 10, 2)->default(0);
 
-            $table->smallInteger('currency');
+            $table->string('currency');
 
             $table->timestamps();
         });

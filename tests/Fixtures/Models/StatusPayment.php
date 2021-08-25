@@ -49,7 +49,7 @@ class StatusPayment extends UuidModel
         return TestCase::PAYMENT_SUM;
     }
 
-    protected function getCurrencyAttribute(): int
+    protected function getCurrencyAttribute(): string
     {
         return TestCase::CURRENCY;
     }
