@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Helldar\CashierDriver\Sber\QrCode\Requests;
 
+use Helldar\Cashier\Facades\Config\Main;
 use Helldar\Cashier\Facades\Helpers\Date;
 use Helldar\Cashier\Http\Request;
 use Helldar\CashierDriver\Sber\Auth\Auth;
@@ -38,6 +39,20 @@ abstract class BaseRequest extends Request
             'Accept'       => 'application/json',
             'Content-Type' => 'application/json',
         ];
+    }
+
+    public function getHttpOptions(): array
+    {
+        if (Main::isProduction()) {
+            return [
+                'cert' => [
+                    $this->model->getCertificatePath(),
+                    $this->model->getCertificatePassword(),
+                ],
+            ];
+        }
+
+        return [];
     }
 
     protected function uniqueId(): string
