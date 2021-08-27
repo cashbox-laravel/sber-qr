@@ -6,13 +6,3 @@ RqUID: {{unique_id}}
 Authorization: Basic {{client_hash}}
 
 grant_type=client_credentials&scope=https://api.sberbank.ru/order.create
-
-###
-POST https://dev.api.sberbank.ru/ru/prod/tokens/v2/oauth
-Accept: application/json
-Content-Type: application/x-www-form-urlencoded
-X-IBM-Client-Id: 5b0444a4-cce4-4401-8dbd-3be166fcac4f
-RqUID: c6cf60f8368c3d921b17b49e353f2dee
-Authorization: Basic NWIwNDQ0YTQtY2NlNC00NDAxLThkYmQtM2JlMTY2ZmNhYzRmOmRBMW5WN2RCNW1LM2tDM25MN2JOOHRDNXRMMXZPMGpINHdFMHdOMHVINGhMNXVUNmlG
-
-grant_type=client_credentials&scope=https://api.sberbank.ru/order.create
