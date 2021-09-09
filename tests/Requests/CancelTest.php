@@ -42,7 +42,7 @@ class CancelTest extends TestCase
 
         $this->assertInstanceOf(Builder::class, $request->uri());
 
-        $this->assertSame('https://dev.api.sberbank.ru/ru/prod/order/v1/revocation', $request->uri()->toUrl());
+        $this->assertSame('https://dev.api.sberbank.ru/ru/prod/order/v1/cancel', $request->uri()->toUrl());
     }
 
     public function testHeaders()

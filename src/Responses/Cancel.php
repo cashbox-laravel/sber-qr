@@ -21,11 +21,11 @@ namespace Helldar\CashierDriver\Sber\QrCode\Responses;
 
 use Helldar\Cashier\Http\Response;
 
-class Refund extends Response
+class Cancel extends Response
 {
     protected $map = [
         self::KEY_EXTERNAL_ID => 'status.order_id',
 
-        self::KEY_STATUS => 'status.order_state',
+        self::KEY_STATUS => 'status.order_status',
     ];
 }

@@ -25,7 +25,7 @@ use Helldar\CashierDriver\Sber\QrCode\Requests\Create;
 use Helldar\CashierDriver\Sber\QrCode\Requests\Status;
 use Helldar\CashierDriver\Sber\QrCode\Resources\Details;
 use Helldar\CashierDriver\Sber\QrCode\Responses\QrCode;
-use Helldar\CashierDriver\Sber\QrCode\Responses\Refund;
+use Helldar\CashierDriver\Sber\QrCode\Responses\Cancel as CancelResponse;
 use Helldar\CashierDriver\Sber\QrCode\Responses\Status as StatusResponse;
 use Helldar\Contracts\Cashier\Http\Response;
 
@@ -55,6 +55,6 @@ class Driver extends BaseDriver
     {
         $request = Cancel::make($this->model);
 
-        return $this->request($request, Refund::class);
+        return $this->request($request, CancelResponse::class);
     }
 }

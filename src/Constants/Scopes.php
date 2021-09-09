@@ -23,5 +23,5 @@ class Scopes
 
     public const STATUS = 'https://api.sberbank.ru/order.status';
 
-    public const CANCEL = 'https://api.sberbank.ru/order.revoke';
+    public const CANCEL = 'https://api.sberbank.ru/order.cancel';
 }

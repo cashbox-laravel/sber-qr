@@ -24,7 +24,7 @@ use Helldar\CashierDriver\Sber\QrCode\Constants\Scopes;
 
 class Cancel extends BaseRequest
 {
-    protected $path = '/ru/prod/order/v1/revocation';
+    protected $path = '/ru/prod/order/v1/cancel';
 
     protected $auth_extra = [
         Body::SCOPE => Scopes::CANCEL,
@@ -36,7 +36,21 @@ class Cancel extends BaseRequest
             Body::REQUEST_ID   => $this->uniqueId(),
             Body::REQUEST_TIME => $this->currentTime(),
 
-            Body::EXTERNAL_ID => $this->model->getExternalId(),
+            Body::TERMINAL_ID => $this->model->getTerminalId(),
+
+            Body::EXTERNAL_ID  => $this->model->getExternalId(),
+            Body::OPERATION_ID => $this->model->getExternalId(),
+
+            Body::OPERATION_CURRENCY => $this->model->getCurrency(),
+
+            Body::AUTH_CODE => $this->getAuthCode(),
+
+            Body::CANCEL_SUM => $this->model->getSum(),
         ];
+    }
+
+    protected function getAuthCode(): string
+    {
+        return (string) $this->model->getSum();
     }
 }

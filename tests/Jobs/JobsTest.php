@@ -110,7 +110,7 @@ class JobsTest extends TestCase
         $this->assertIsString($payment->cashier->external_id);
         $this->assertMatchesRegularExpression('/^(\d+)$/', $payment->cashier->external_id);
 
-        $this->assertSame('REVOKED', $payment->cashier->details->getStatus());
+        $this->assertSame('REVERSED', $payment->cashier->details->getStatus());
 
         $this->assertSame(
             PaymentConfig::getStatuses()->getStatus(Status::REFUND),

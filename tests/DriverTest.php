@@ -85,7 +85,7 @@ class DriverTest extends TestCase
         $this->assertIsString($response->getExternalId());
         $this->assertMatchesRegularExpression('/^(\d+)$/', $response->getExternalId());
 
-        $this->assertSame('REVOKED', $response->getStatus());
+        $this->assertSame('REVERSED', $response->getStatus());
     }
 
     protected function driver(): DriverContract

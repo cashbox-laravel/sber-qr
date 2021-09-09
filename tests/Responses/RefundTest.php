@@ -18,7 +18,7 @@
 namespace Tests\Responses;
 
 use Helldar\Cashier\Http\Response as BaseResponse;
-use Helldar\CashierDriver\Sber\QrCode\Responses\Refund;
+use Helldar\CashierDriver\Sber\QrCode\Responses\Cancel as CancelResponse;
 use Helldar\Contracts\Cashier\Http\Response;
 use Tests\TestCase;
 
@@ -28,7 +28,7 @@ class RefundTest extends TestCase
     {
         $response = $this->response();
 
-        $this->assertInstanceOf(Refund::class, $response);
+        $this->assertInstanceOf(CancelResponse::class, $response);
         $this->assertInstanceOf(Response::class, $response);
     }
 
@@ -43,7 +43,7 @@ class RefundTest extends TestCase
     {
         $response = $this->response();
 
-        $this->assertSame('REVOKED', $response->getStatus());
+        $this->assertSame('REVERSED', $response->getStatus());
     }
 
     public function testToArray()
@@ -51,17 +51,17 @@ class RefundTest extends TestCase
         $response = $this->response();
 
         $this->assertSame([
-            BaseResponse::KEY_STATUS => 'REVOKED',
+            BaseResponse::KEY_STATUS => 'REVERSED',
         ], $response->toArray());
     }
 
     protected function response(): Response
     {
-        return Refund::make([
+        return CancelResponse::make([
             'status' => [
-                'order_id'    => self::PAYMENT_EXTERNAL_ID,
-                'order_state' => 'REVOKED',
-                'error'       => 0,
+                'order_id'     => self::PAYMENT_EXTERNAL_ID,
+                'order_status' => 'REVERSED',
+                'error_code'   => 0,
             ],
         ]);
     }

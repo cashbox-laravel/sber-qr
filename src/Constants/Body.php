@@ -37,5 +37,13 @@ class Body
 
     public const ORDER_CREATED_AT = 'order_create_date';
 
+    public const OPERATION_ID = 'operation_id';
+
+    public const OPERATION_CURRENCY = 'operation_currency';
+
+    public const AUTH_CODE = 'auth_code';
+
+    public const CANCEL_SUM = 'cancel_operation_sum';
+
     public const SCOPE = 'scope';
 }
