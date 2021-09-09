@@ -24,8 +24,8 @@ use Helldar\CashierDriver\Sber\QrCode\Requests\Cancel;
 use Helldar\CashierDriver\Sber\QrCode\Requests\Create;
 use Helldar\CashierDriver\Sber\QrCode\Requests\Status;
 use Helldar\CashierDriver\Sber\QrCode\Resources\Details;
-use Helldar\CashierDriver\Sber\QrCode\Responses\QrCode;
 use Helldar\CashierDriver\Sber\QrCode\Responses\Cancel as CancelResponse;
+use Helldar\CashierDriver\Sber\QrCode\Responses\QrCode;
 use Helldar\CashierDriver\Sber\QrCode\Responses\Status as StatusResponse;
 use Helldar\Contracts\Cashier\Http\Response;
 
