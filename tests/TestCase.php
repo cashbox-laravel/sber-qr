@@ -81,6 +81,8 @@ abstract class TestCase extends BaseTestCase
             self::MODEL_TYPE_ID => 'sber_qr',
         ]);
 
+        $config->set('cashier.logs.enabled', false);
+
         $is_production = $config->get('cashier.env') === 'production';
 
         $config->set('cashier.drivers.sber_qr', [
