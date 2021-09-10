@@ -23,21 +23,11 @@ use Helldar\CashierDriver\Sber\QrCode\Driver as QR;
 use Helldar\Contracts\Cashier\Driver as DriverContract;
 use Helldar\Contracts\Cashier\Http\Response as ResponseContract;
 use Helldar\Support\Facades\Http\Url;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\Fixtures\Models\RequestPayment;
 
 class DriverTest extends TestCase
 {
-    use RefreshDatabase;
-
     protected $model = RequestPayment::class;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->runSeeders();
-    }
 
     public function testStart()
     {

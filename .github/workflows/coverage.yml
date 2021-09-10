@@ -11,6 +11,16 @@ jobs:
 
         name: Coverage
 
+        services:
+            mysql:
+                image: mysql:8.0
+                env:
+                    MYSQL_ROOT_PASSWORD: root
+                    MYSQL_DATABASE: default
+                ports:
+                    - 3306:3306
+                options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
         steps:
             -   name: Checkout code
                 uses: actions/checkout@v2
@@ -36,6 +46,9 @@ jobs:
                 run: |
                     mkdir -p build/logs
                     sudo vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
+                env:
+                    MYSQL_HOST: 127.0.0.1
+                    PGSQL_HOST: 127.0.0.1
 
             -   name: Export
                 run: |

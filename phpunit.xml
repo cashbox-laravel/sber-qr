@@ -32,8 +32,10 @@
     <php>
         <env name="APP_KEY" value="base64:cW+4bNmhMQKcLH/+u+uByODdGBuXAgd1nzZpufnIwks="/>
         <env name="APP_ENV" value="testing"/>
-        <env name="DB_CONNECTION" value="testing"/>
-        <env name="DB_DATABASE" value=":memory:"/>
+        <env name="DB_CONNECTION" value="mysql"/>
+        <env name="DB_DATABASE" value="default"/>
+        <env name="DB_USERNAME" value="root"/>
+        <env name="DB_PASSWORD" value="root"/>
         <env name="QUEUE_CONNECTION" value="sync"/>
         <env name="CACHE_DRIVER" value="file"/>
     </php>

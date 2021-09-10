@@ -27,6 +27,7 @@ use Helldar\Contracts\Cashier\Http\Request;
 use Helldar\Contracts\Cashier\Resources\Details;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 use Illuminate\Foundation\Bootstrap\LoadEnvironmentVariables;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 use Tests\database\seeders\DatabaseSeeder;
 use Tests\Fixtures\Models\ReadyPayment;
@@ -34,6 +35,8 @@ use Tests\Fixtures\Resources\Model;
 
 abstract class TestCase extends BaseTestCase
 {
+    use RefreshDatabase;
+
     public const PAYMENT_EXTERNAL_ID = '456789';
 
     public const PAYMENT_ID = '1234567890';
@@ -60,6 +63,14 @@ abstract class TestCase extends BaseTestCase
 
     protected $model = ReadyPayment::class;
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->refreshDatabase();
+        $this->runSeeders();
+    }
+
     protected function getPackageProviders($app): array
     {
         return [ServiceProvider::class];
@@ -74,6 +85,8 @@ abstract class TestCase extends BaseTestCase
         $config = $app['config'];
 
         $config->set('cashier.env', env('CASHIER_ENV', env('APP_ENV', 'testing')));
+
+        $config->set('cashier.logs.enabled', false);
 
         $config->set('cashier.payment.model', $this->model);
 
