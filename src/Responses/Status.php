@@ -26,6 +26,8 @@ class Status extends Response
     protected $map = [
         self::KEY_EXTERNAL_ID => 'status.order_id',
 
+        self::KEY_OPERATION_ID => 'status.order_operation_params.0.operation_id',
+
         self::KEY_STATUS => 'status.order_state',
     ];
 

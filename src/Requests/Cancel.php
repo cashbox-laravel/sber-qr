@@ -39,7 +39,7 @@ class Cancel extends BaseRequest
             Body::TERMINAL_ID => $this->model->getTerminalId(),
 
             Body::EXTERNAL_ID  => $this->model->getExternalId(),
-            Body::OPERATION_ID => $this->model->getExternalId(),
+            Body::OPERATION_ID => $this->model->getOperationId(),
 
             Body::OPERATION_CURRENCY => $this->model->getCurrency(),
 

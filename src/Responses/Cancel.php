@@ -26,6 +26,13 @@ class Cancel extends Response
     protected $map = [
         self::KEY_EXTERNAL_ID => 'status.order_id',
 
+        self::KEY_OPERATION_ID => 'status.order_operation_params.0.operation_id',
+
         self::KEY_STATUS => 'status.order_status',
     ];
+
+    public function isEmpty(): bool
+    {
+        return empty($this->getExternalId()) || empty($this->getOperationId());
+    }
 }
