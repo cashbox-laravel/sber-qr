@@ -27,15 +27,16 @@ use Helldar\Contracts\Cashier\Http\Request;
 use Helldar\Contracts\Cashier\Resources\Details;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 use Illuminate\Foundation\Bootstrap\LoadEnvironmentVariables;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Orchestra\Testbench\TestCase as BaseTestCase;
-use Tests\database\seeders\DatabaseSeeder;
+use Tests\Concerns\Database;
+use Tests\Fixtures\Factories\Payment;
 use Tests\Fixtures\Models\ReadyPayment;
+use Tests\Fixtures\Models\RequestPayment;
 use Tests\Fixtures\Resources\Model;
 
 abstract class TestCase extends BaseTestCase
 {
-    use RefreshDatabase;
+    use Database;
 
     public const PAYMENT_EXTERNAL_ID = '456789';
 
@@ -67,8 +68,8 @@ abstract class TestCase extends BaseTestCase
     {
         parent::setUp();
 
-        $this->refreshDatabase();
-        $this->runSeeders();
+        $this->migrate();
+        $this->prePayment();
     }
 
     protected function getPackageProviders($app): array
@@ -94,8 +95,6 @@ abstract class TestCase extends BaseTestCase
             self::MODEL_TYPE_ID => 'sber_qr',
         ]);
 
-        $config->set('cashier.logs.enabled', false);
-
         $is_production = $config->get('cashier.env') === 'production';
 
         $config->set('cashier.drivers.sber_qr', [
@@ -114,10 +113,9 @@ abstract class TestCase extends BaseTestCase
         ]);
     }
 
-    protected function defineDatabaseMigrations()
+    protected function migrate()
     {
         $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
-        $this->loadMigrationsFrom(__DIR__ . '/../vendor/andrey-helldar/cashier/database/migrations/main');
     }
 
     protected function model(Details $details = null, int $status_id = 0): EloquentModel
@@ -180,12 +178,5 @@ abstract class TestCase extends BaseTestCase
     protected function getClientSecret(): string
     {
         return config('cashier.drivers.sber_qr.client_secret');
-    }
-
-    protected function runSeeders()
-    {
-        $seeder = new DatabaseSeeder();
-
-        $seeder->run();
     }
 }

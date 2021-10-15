@@ -21,13 +21,20 @@ use Helldar\Cashier\Facades\Config\Payment as PaymentConfig;
 use Helldar\Cashier\Providers\ObserverServiceProvider;
 use Helldar\Cashier\Providers\ServiceProvider;
 use Illuminate\Support\Facades\DB;
-use Tests\Fixtures\Factories\Payment;
 use Tests\Fixtures\Models\RequestPayment;
 use Tests\TestCase;
 
 class ObserverTest extends TestCase
 {
     protected $model = RequestPayment::class;
+
+    protected function getPackageProviders($app): array
+    {
+        return [
+            ServiceProvider::class,
+            ObserverServiceProvider::class,
+        ];
+    }
 
     public function testCreate()
     {
@@ -94,18 +101,5 @@ class ObserverTest extends TestCase
             PaymentConfig::getStatuses()->getStatus(Status::SUCCESS),
             $payment->status_id
         );
-    }
-
-    protected function getPackageProviders($app): array
-    {
-        return [
-            ServiceProvider::class,
-            ObserverServiceProvider::class,
-        ];
-    }
-
-    protected function payment(): RequestPayment
-    {
-        return Payment::create()->refresh();
     }
 }

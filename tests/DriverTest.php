@@ -31,6 +31,8 @@ class DriverTest extends TestCase
 
     public function testStart()
     {
+        Jobs::make($this->payment())->start();
+
         $response = $this->driver()->start();
 
         $this->assertInstanceOf(Response::class, $response);
@@ -59,13 +61,18 @@ class DriverTest extends TestCase
         $this->assertSame('PAID', $response->getStatus());
 
         $this->assertSame([
+            'operation_id' => '10001HFYYR8956637',
+
             'status' => 'PAID',
         ], $response->toArray());
     }
 
     public function testRefund()
     {
-        Jobs::make($this->payment())->start();
+        $payment = $this->payment();
+
+        Jobs::make($payment)->start();
+        Jobs::make($payment)->check(true);
 
         $response = $this->driver()->refund();
 
@@ -80,14 +87,14 @@ class DriverTest extends TestCase
 
     protected function driver(): DriverContract
     {
-        $model = $this->payment();
+        $model = $this->paymentRequest();
 
         $config = $this->config();
 
         return QR::make($config, $model);
     }
 
-    protected function payment(): RequestPayment
+    protected function paymentRequest(): RequestPayment
     {
         return RequestPayment::firstOrFail();
     }

@@ -21,13 +21,14 @@ use Helldar\Cashier\Facades\Config\Payment as PaymentConfig;
 use Helldar\Cashier\Services\Jobs;
 use Helldar\Support\Facades\Http\Url;
 use Illuminate\Support\Facades\DB;
-use Tests\Fixtures\Factories\Payment;
 use Tests\Fixtures\Models\RequestPayment;
 use Tests\TestCase;
 
 class JobsTest extends TestCase
 {
     protected $model = RequestPayment::class;
+
+    protected $pre_payment = false;
 
     public function testStart()
     {
@@ -113,10 +114,5 @@ class JobsTest extends TestCase
             PaymentConfig::getStatuses()->getStatus(Status::REFUND),
             $payment->status_id
         );
-    }
-
-    protected function payment(): RequestPayment
-    {
-        return Payment::create();
     }
 }
