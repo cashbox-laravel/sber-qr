@@ -28,14 +28,6 @@ class ObserverTest extends TestCase
 {
     protected $model = RequestPayment::class;
 
-    protected function getPackageProviders($app): array
-    {
-        return [
-            ServiceProvider::class,
-            ObserverServiceProvider::class,
-        ];
-    }
-
     public function testCreate()
     {
         $this->assertSame(0, DB::table('payments')->count());
@@ -101,5 +93,13 @@ class ObserverTest extends TestCase
             PaymentConfig::getStatuses()->getStatus(Status::SUCCESS),
             $payment->status_id
         );
+    }
+
+    protected function getPackageProviders($app): array
+    {
+        return [
+            ServiceProvider::class,
+            ObserverServiceProvider::class,
+        ];
     }
 }
