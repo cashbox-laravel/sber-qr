@@ -29,9 +29,7 @@ use Illuminate\Database\Eloquent\Model as EloquentModel;
 use Illuminate\Foundation\Bootstrap\LoadEnvironmentVariables;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 use Tests\Concerns\Database;
-use Tests\Fixtures\Factories\Payment;
 use Tests\Fixtures\Models\ReadyPayment;
-use Tests\Fixtures\Models\RequestPayment;
 use Tests\Fixtures\Resources\Model;
 
 abstract class TestCase extends BaseTestCase
