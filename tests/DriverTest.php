@@ -31,9 +31,9 @@ class DriverTest extends TestCase
 
     public function testStart()
     {
-        Jobs::make($this->payment())->start();
+        $payment = $this->payment();
 
-        $response = $this->driver()->start();
+        $response = $this->driver($payment)->start();
 
         $this->assertInstanceOf(Response::class, $response);
         $this->assertInstanceOf(ResponseContract::class, $response);
@@ -48,9 +48,11 @@ class DriverTest extends TestCase
 
     public function testCheck()
     {
-        Jobs::make($this->payment())->start();
+        $payment = $this->payment();
 
-        $response = $this->driver()->check();
+        Jobs::make($payment)->start();
+
+        $response = $this->driver($payment)->check();
 
         $this->assertInstanceOf(Response::class, $response);
         $this->assertInstanceOf(ResponseContract::class, $response);
@@ -74,7 +76,7 @@ class DriverTest extends TestCase
         Jobs::make($payment)->start();
         Jobs::make($payment)->check(true);
 
-        $response = $this->driver()->refund();
+        $response = $this->driver($payment)->refund();
 
         $this->assertInstanceOf(Response::class, $response);
         $this->assertInstanceOf(ResponseContract::class, $response);
@@ -85,17 +87,10 @@ class DriverTest extends TestCase
         $this->assertSame('REVERSED', $response->getStatus());
     }
 
-    protected function driver(): DriverContract
+    protected function driver(RequestPayment $payment): DriverContract
     {
-        $model = $this->paymentRequest();
-
         $config = $this->config();
 
-        return QR::make($config, $model);
-    }
-
-    protected function paymentRequest(): RequestPayment
-    {
-        return RequestPayment::firstOrFail();
+        return QR::make($config, $payment);
     }
 }

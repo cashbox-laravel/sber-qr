@@ -4,25 +4,22 @@ declare(strict_types=1);
 
 namespace Tests\Concerns;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\Fixtures\Factories\Payment;
 use Tests\Fixtures\Models\RequestPayment;
 
 trait Database
 {
-    use RefreshDatabase;
-
-    protected $pre_payment = true;
-
-    protected function prePayment(): void
+    protected function defineDatabaseMigrations()
     {
-        if ($this->pre_payment) {
-            $this->payment($this->pre_payment);
-        }
+        $this->artisan('migrate:reset')->run();
+
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+
+        $this->artisan('migrate')->run();
     }
 
-    protected function payment(bool $enabled_events = false): RequestPayment
+    protected function payment(): RequestPayment
     {
-        return Payment::create($enabled_events)->refresh();
+        return Payment::create();
     }
 }

@@ -62,14 +62,6 @@ abstract class TestCase extends BaseTestCase
 
     protected $model = ReadyPayment::class;
 
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->migrate();
-        $this->prePayment();
-    }
-
     protected function getPackageProviders($app): array
     {
         return [ServiceProvider::class];
@@ -109,11 +101,6 @@ abstract class TestCase extends BaseTestCase
 
             'certificate_password' => $is_production ? env('CASHIER_SBER_QR_CERTIFICATE_PASSWORD') : null,
         ]);
-    }
-
-    protected function migrate()
-    {
-        $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
     }
 
     protected function model(Details $details = null, int $status_id = 0): EloquentModel

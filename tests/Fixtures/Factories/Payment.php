@@ -21,26 +21,7 @@ use Tests\TestCase;
 
 class Payment
 {
-    public static function create(bool $enabled_events = false): RequestPayment
-    {
-        return $enabled_events
-            ? static::withEvents()
-            : static::withoutEvents();
-    }
-
-    protected static function withoutEvents(): RequestPayment
-    {
-        return RequestPayment::withoutEvents(static function () {
-            static::store();
-        });
-    }
-
-    protected static function withEvents(): RequestPayment
-    {
-        return static::store();
-    }
-
-    protected static function store(): RequestPayment
+    public static function create(): RequestPayment
     {
         return RequestPayment::create([
             'type_id'   => TestCase::MODEL_TYPE_ID,
