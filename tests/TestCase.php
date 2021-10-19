@@ -77,8 +77,6 @@ abstract class TestCase extends BaseTestCase
 
         $config->set('cashier.env', env('CASHIER_ENV', env('APP_ENV', 'testing')));
 
-        $config->set('cashier.logs.enabled', false);
-
         $config->set('cashier.payment.model', $this->model);
 
         $config->set('cashier.payment.map', [

@@ -30,6 +30,8 @@ class Cancel extends BaseRequest
         Body::SCOPE => Scopes::CANCEL,
     ];
 
+    protected $force_reload = true;
+
     public function getRawBody(): array
     {
         return [
