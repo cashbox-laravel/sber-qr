@@ -44,12 +44,9 @@ abstract class BaseRequest extends Request
     public function getHttpOptions(): array
     {
         if (Main::isProduction()) {
-            return [
-                'cert' => [
-                    $this->model->getCertificatePath(),
-                    $this->model->getCertificatePassword(),
-                ],
-            ];
+            $cert = $this->getCertificateData();
+
+            return compact('cert');
         }
 
         return [];
@@ -65,5 +62,13 @@ abstract class BaseRequest extends Request
         $date = Carbon::now();
 
         return Date::toString($date);
+    }
+
+    protected function getCertificateData(): array
+    {
+        return [
+            $this->model->getCertificatePath(),
+            $this->model->getCertificatePassword(),
+        ];
     }
 }

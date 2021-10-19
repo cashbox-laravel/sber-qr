@@ -23,11 +23,6 @@ use Illuminate\Support\Carbon;
 /** @property \Tests\Fixtures\Models\ReadyPayment $model */
 class Model extends BaseModel
 {
-    public function getExternalId(): ?string
-    {
-        return $this->model->cashier->external_id;
-    }
-
     public function getMemberId(): string
     {
         return config('cashier.drivers.sber_qr.member_id');

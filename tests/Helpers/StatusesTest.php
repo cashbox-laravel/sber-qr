@@ -151,8 +151,7 @@ class StatusesTest extends TestCase
 
         $this->assertFalse($this->status('PAID', 1)->inProgress());
 
-        $this->assertFalse($this->status('UNKNOWN', 7)->inProgress());
-
+        $this->assertTrue($this->status('UNKNOWN', 7)->inProgress());
         $this->assertTrue($this->status('UNKNOWN', 7)->inProgress('CREATED'));
 
         $this->assertFalse($this->status('UNKNOWN', 7)->inProgress('REVERSED'));
@@ -161,7 +160,7 @@ class StatusesTest extends TestCase
 
         $this->assertFalse($this->status('UNKNOWN', 7)->inProgress('PAID'));
 
-        $this->assertFalse($this->status('UNKNOWN', 7)->inProgress('UNKNOWN'));
+        $this->assertTrue($this->status('UNKNOWN', 7)->inProgress('UNKNOWN'));
     }
 
     protected function status(string $name, int $status_id = 0): Statuses

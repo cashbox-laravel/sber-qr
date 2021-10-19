@@ -21,7 +21,6 @@ use Helldar\Cashier\Config\Driver as DriverConfig;
 use Helldar\Cashier\Constants\Driver as DriverConstant;
 use Helldar\Cashier\Facades\Config\Payment as PaymentConfig;
 use Helldar\Cashier\Models\CashierDetail;
-use Helldar\Cashier\Providers\ServiceProvider;
 use Helldar\CashierDriver\Sber\QrCode\Driver;
 use Helldar\Contracts\Cashier\Http\Request;
 use Helldar\Contracts\Cashier\Resources\Details;
@@ -29,7 +28,7 @@ use Illuminate\Database\Eloquent\Model as EloquentModel;
 use Illuminate\Foundation\Bootstrap\LoadEnvironmentVariables;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 use Tests\Concerns\Database;
-use Tests\Fixtures\Models\ReadyPayment;
+use Tests\Concerns\TestServiceProvider;
 use Tests\Fixtures\Resources\Model;
 
 abstract class TestCase extends BaseTestCase
@@ -60,19 +59,9 @@ abstract class TestCase extends BaseTestCase
 
     public const MODEL_STATUS_ID = 0;
 
-    protected $model = ReadyPayment::class;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->migrate();
-        $this->prePayment();
-    }
-
     protected function getPackageProviders($app): array
     {
-        return [ServiceProvider::class];
+        return [TestServiceProvider::class];
     }
 
     protected function getEnvironmentSetup($app)
@@ -84,8 +73,6 @@ abstract class TestCase extends BaseTestCase
         $config = $app['config'];
 
         $config->set('cashier.env', env('CASHIER_ENV', env('APP_ENV', 'testing')));
-
-        $config->set('cashier.logs.enabled', false);
 
         $config->set('cashier.payment.model', $this->model);
 
@@ -109,11 +96,6 @@ abstract class TestCase extends BaseTestCase
 
             'certificate_password' => $is_production ? env('CASHIER_SBER_QR_CERTIFICATE_PASSWORD') : null,
         ]);
-    }
-
-    protected function migrate()
-    {
-        $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
     }
 
     protected function model(Details $details = null, int $status_id = 0): EloquentModel

@@ -7,13 +7,13 @@ on:
 
 jobs:
     scrutinizer:
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-latest
 
         name: Coverage
 
         services:
             mysql:
-                image: mysql:8.0
+                image: mysql:5.7
                 env:
                     MYSQL_ROOT_PASSWORD: root
                     MYSQL_DATABASE: default
