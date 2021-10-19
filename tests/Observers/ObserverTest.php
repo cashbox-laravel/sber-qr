@@ -19,8 +19,8 @@ namespace Tests\Observers;
 use Helldar\Cashier\Constants\Status;
 use Helldar\Cashier\Facades\Config\Payment as PaymentConfig;
 use Helldar\Cashier\Providers\ObserverServiceProvider;
-use Helldar\Cashier\Providers\ServiceProvider;
 use Illuminate\Support\Facades\DB;
+use Tests\Concerns\TestServiceProvider;
 use Tests\Fixtures\Models\RequestPayment;
 use Tests\TestCase;
 
@@ -28,14 +28,20 @@ class ObserverTest extends TestCase
 {
     protected $model = RequestPayment::class;
 
+    protected function getPackageProviders($app): array
+    {
+        return [
+            TestServiceProvider::class,
+            ObserverServiceProvider::class,
+        ];
+    }
+
     public function testCreate()
     {
         $this->assertSame(0, DB::table('payments')->count());
         $this->assertSame(0, DB::table('cashier_details')->count());
 
-        $payment = $this->payment();
-
-        $payment->refresh();
+        $payment = $this->payment()->refresh();
 
         $this->assertSame(1, DB::table('payments')->count());
         $this->assertSame(1, DB::table('cashier_details')->count());
@@ -58,7 +64,7 @@ class ObserverTest extends TestCase
         $this->assertSame(0, DB::table('payments')->count());
         $this->assertSame(0, DB::table('cashier_details')->count());
 
-        $payment = $this->payment();
+        $payment = $this->payment()->refresh();
 
         $this->assertSame(1, DB::table('payments')->count());
         $this->assertSame(1, DB::table('cashier_details')->count());
@@ -93,13 +99,5 @@ class ObserverTest extends TestCase
             PaymentConfig::getStatuses()->getStatus(Status::SUCCESS),
             $payment->status_id
         );
-    }
-
-    protected function getPackageProviders($app): array
-    {
-        return [
-            ServiceProvider::class,
-            ObserverServiceProvider::class,
-        ];
     }
 }

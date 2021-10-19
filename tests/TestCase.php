@@ -21,7 +21,6 @@ use Helldar\Cashier\Config\Driver as DriverConfig;
 use Helldar\Cashier\Constants\Driver as DriverConstant;
 use Helldar\Cashier\Facades\Config\Payment as PaymentConfig;
 use Helldar\Cashier\Models\CashierDetail;
-use Helldar\Cashier\Providers\ServiceProvider;
 use Helldar\CashierDriver\Sber\QrCode\Driver;
 use Helldar\Contracts\Cashier\Http\Request;
 use Helldar\Contracts\Cashier\Resources\Details;
@@ -29,7 +28,7 @@ use Illuminate\Database\Eloquent\Model as EloquentModel;
 use Illuminate\Foundation\Bootstrap\LoadEnvironmentVariables;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 use Tests\Concerns\Database;
-use Tests\Fixtures\Models\ReadyPayment;
+use Tests\Concerns\TestServiceProvider;
 use Tests\Fixtures\Resources\Model;
 
 abstract class TestCase extends BaseTestCase
@@ -60,11 +59,9 @@ abstract class TestCase extends BaseTestCase
 
     public const MODEL_STATUS_ID = 0;
 
-    protected $model = ReadyPayment::class;
-
     protected function getPackageProviders($app): array
     {
-        return [ServiceProvider::class];
+        return [TestServiceProvider::class];
     }
 
     protected function getEnvironmentSetup($app)

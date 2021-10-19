@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the "andrey-helldar/cashier-sber-qr" project.
  *
@@ -14,21 +15,19 @@
  * @see https://github.com/andrey-helldar/cashier-sber-qr
  */
 
-namespace Tests\Fixtures\Factories;
+declare(strict_types=1);
 
-use Tests\Fixtures\Models\RequestPayment;
-use Tests\TestCase;
+namespace Tests\Concerns;
 
-class Payment
+use Helldar\Cashier\Providers\ServiceProvider;
+
+class TestServiceProvider extends ServiceProvider
 {
-    public static function create(): RequestPayment
+    protected function bootMigrations(): void
     {
-        return RequestPayment::create([
-            'type_id'   => TestCase::MODEL_TYPE_ID,
-            'status_id' => TestCase::MODEL_STATUS_ID,
-
-            'sum'      => TestCase::PAYMENT_SUM,
-            'currency' => TestCase::CURRENCY,
+        $this->loadMigrationsFrom([
+            __DIR__ . '/../database/migrations',
+            __DIR__ . '/../../vendor/andrey-helldar/cashier/database/migrations/main',
         ]);
     }
 }

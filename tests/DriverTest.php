@@ -23,6 +23,7 @@ use Helldar\CashierDriver\Sber\QrCode\Driver as QR;
 use Helldar\Contracts\Cashier\Driver as DriverContract;
 use Helldar\Contracts\Cashier\Http\Response as ResponseContract;
 use Helldar\Support\Facades\Http\Url;
+use Illuminate\Database\Eloquent\Model;
 use Tests\Fixtures\Models\RequestPayment;
 
 class DriverTest extends TestCase
@@ -87,7 +88,7 @@ class DriverTest extends TestCase
         $this->assertSame('REVERSED', $response->getStatus());
     }
 
-    protected function driver(RequestPayment $payment): DriverContract
+    protected function driver(Model $payment): DriverContract
     {
         $config = $this->config();
 

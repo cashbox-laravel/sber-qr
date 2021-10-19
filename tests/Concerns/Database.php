@@ -19,22 +19,28 @@ declare(strict_types=1);
 
 namespace Tests\Concerns;
 
-use Tests\Fixtures\Factories\Payment;
-use Tests\Fixtures\Models\RequestPayment;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\Fixtures\Models\ReadyPayment;
+use Tests\TestCase;
 
 trait Database
 {
-    protected function defineDatabaseMigrations()
+    use RefreshDatabase;
+
+    /** @var \Illuminate\Database\Eloquent\Model|string */
+    protected $model = ReadyPayment::class;
+
+    protected function payment(): Model
     {
-        $this->artisan('migrate:fresh')->run();
+        $model = $this->model;
 
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        return $model::create([
+            'type_id'   => TestCase::MODEL_TYPE_ID,
+            'status_id' => TestCase::MODEL_STATUS_ID,
 
-        $this->artisan('migrate')->run();
-    }
-
-    protected function payment(): RequestPayment
-    {
-        return Payment::create();
+            'sum'      => TestCase::PAYMENT_SUM,
+            'currency' => TestCase::CURRENCY,
+        ]);
     }
 }
