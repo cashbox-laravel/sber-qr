@@ -1,6 +1,6 @@
 <?php
 /*
- * This file is part of the "andrey-helldar/cashier-sber-qr" project.
+ * This file is part of the "cashier-provider/sber-qr" project.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,12 +11,12 @@
  *
  * @license MIT
  *
- * @see https://github.com/andrey-helldar/cashier-sber-qr
+ * @see https://github.com/cashier-provider/sber-qr
  */
 
 namespace Tests\Fixtures\Models;
 
-use Helldar\Cashier\Concerns\Casheable;
+use CashierProvider\Core\Concerns\Casheable;
 use Helldar\LaravelSupport\Eloquent\UuidModel;
 
 /**

@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the "andrey-helldar/cashier-sber-qr" project.
+ * This file is part of the "cashier-provider/sber-qr" project.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -12,14 +12,14 @@
  *
  * @license MIT
  *
- * @see https://github.com/andrey-helldar/cashier-sber-qr
+ * @see https://github.com/cashier-provider/sber-qr
  */
 
 declare(strict_types=1);
 
-namespace Helldar\CashierDriver\Sber\QrCode\Resources;
+namespace CashierProvider\Sber\QrCode\Resources;
 
-use Helldar\Cashier\Resources\Details as BaseDetails;
+use CashierProvider\Core\Resources\Details as BaseDetails;
 
 class Details extends BaseDetails
 {

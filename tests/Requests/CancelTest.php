@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the "andrey-helldar/cashier-sber-qr" project.
+ * This file is part of the "cashier-provider/sber-qr" project.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -12,14 +12,14 @@
  *
  * @license MIT
  *
- * @see https://github.com/andrey-helldar/cashier-sber-qr
+ * @see https://github.com/cashier-provider/sber-qr
  */
 
 namespace Tests\Requests;
 
-use Helldar\Cashier\Http\Request;
-use Helldar\CashierDriver\Sber\QrCode\Constants\Body;
-use Helldar\CashierDriver\Sber\QrCode\Requests\Cancel;
+use CashierProvider\Core\Http\Request;
+use CashierProvider\Sber\QrCode\Constants\Body;
+use CashierProvider\Sber\QrCode\Requests\Cancel;
 use Helldar\Contracts\Cashier\Http\Request as RequestContract;
 use Helldar\Contracts\Http\Builder;
 use Helldar\Support\Facades\Helpers\Arr;

@@ -1,6 +1,6 @@
 {
-    "name": "andrey-helldar/cashier-sber-qr",
-    "description": "Driver for payment with QR codes via Sber (see andrey-helldar/cashier)",
+    "name": "cashier-provider/sber-qr",
+    "description": "Driver for payment with QR codes via Sber (see cashier-provider/core)",
     "type": "library",
     "license": "MIT",
     "keywords": [
@@ -19,17 +19,17 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/andrey-helldar/cashier-sber-qr/issues",
-        "source": "https://github.com/andrey-helldar/cashier-sber-qr"
+        "issues": "https://github.com/cashier-provider/sber-qr/issues",
+        "source": "https://github.com/cashier-provider/sber-qr"
     },
     "require": {
         "php": "^7.3|^8.0",
-        "andrey-helldar/cashier-sber-auth": "^1.1",
+        "cashier-provider/core": "^1.29",
+        "cashier-provider/sber-auth": "^1.1",
         "psr/http-message": "^1.0"
     },
     "require-dev": {
         "ext-json": "*",
-        "andrey-helldar/cashier": "^1.28",
         "andrey-helldar/support": "^4.1",
         "illuminate/database": "^6.0|^7.0|^8.0",
         "orchestra/testbench": "^4.0|^5.0|^6.0",
@@ -38,7 +38,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Helldar\\CashierDriver\\Sber\\QrCode\\": "src"
+            "CashierProvider\\Sber\\QrCode\\": "src"
         }
     },
     "autoload-dev": {
