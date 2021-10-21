@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the "andrey-helldar/cashier-sber-qr" project.
+ * This file is part of the "cashier-provider/sber-qr" project.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -12,12 +12,12 @@
  *
  * @license MIT
  *
- * @see https://github.com/andrey-helldar/cashier-sber-qr
+ * @see https://github.com/cashier-provider/sber-qr
  */
 
 namespace Tests\Responses;
 
-use Helldar\CashierDriver\Sber\QrCode\Responses\QrCode;
+use CashierProvider\Sber\QrCode\Responses\QrCode;
 use Helldar\Contracts\Cashier\Http\Response;
 use Tests\TestCase;
 
@@ -63,7 +63,7 @@ class QrCodeTest extends TestCase
     }
 
     /**
-     * @return \Helldar\CashierDriver\Sber\QrCode\Responses\QrCode|\Helldar\Contracts\Cashier\Http\Response
+     * @return \CashierProvider\Sber\QrCode\Responses\QrCode|\Helldar\Contracts\Cashier\Http\Response
      */
     protected function response(): Response
     {

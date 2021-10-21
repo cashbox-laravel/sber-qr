@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the "andrey-helldar/cashier-sber-qr" project.
+ * This file is part of the "cashier-provider/sber-qr" project.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -12,17 +12,17 @@
  *
  * @license MIT
  *
- * @see https://github.com/andrey-helldar/cashier-sber-qr
+ * @see https://github.com/cashier-provider/sber-qr
  */
 
-namespace Helldar\CashierDriver\Sber\QrCode\Exceptions;
+namespace CashierProvider\Sber\QrCode\Exceptions;
 
-use Helldar\Cashier\Exceptions\Http\BadRequestClientException;
-use Helldar\Cashier\Exceptions\Http\BankInternalErrorException;
-use Helldar\Cashier\Exceptions\Http\MethodNotFoundException;
-use Helldar\Cashier\Exceptions\Http\TooManyRequestsException;
-use Helldar\Cashier\Exceptions\Http\UnauthorizedException;
-use Helldar\Cashier\Exceptions\Manager as ExceptionManager;
+use CashierProvider\Core\Exceptions\Http\BadRequestClientException;
+use CashierProvider\Core\Exceptions\Http\BankInternalErrorException;
+use CashierProvider\Core\Exceptions\Http\MethodNotFoundException;
+use CashierProvider\Core\Exceptions\Http\TooManyRequestsException;
+use CashierProvider\Core\Exceptions\Http\UnauthorizedException;
+use CashierProvider\Core\Exceptions\Manager as ExceptionManager;
 
 class Manager extends ExceptionManager
 {

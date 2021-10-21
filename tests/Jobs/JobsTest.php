@@ -1,6 +1,6 @@
 <?php
 /*
- * This file is part of the "andrey-helldar/cashier-sber-qr" project.
+ * This file is part of the "cashier-provider/sber-qr" project.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,14 +11,14 @@
  *
  * @license MIT
  *
- * @see https://github.com/andrey-helldar/cashier-sber-qr
+ * @see https://github.com/cashier-provider/sber-qr
  */
 
 namespace Tests\Jobs;
 
-use Helldar\Cashier\Constants\Status;
-use Helldar\Cashier\Facades\Config\Payment as PaymentConfig;
-use Helldar\Cashier\Services\Jobs;
+use CashierProvider\Core\Constants\Status;
+use CashierProvider\Core\Facades\Config\Payment as PaymentConfig;
+use CashierProvider\Core\Services\Jobs;
 use Helldar\Support\Facades\Http\Url;
 use Illuminate\Support\Facades\DB;
 use Tests\Fixtures\Models\RequestPayment;

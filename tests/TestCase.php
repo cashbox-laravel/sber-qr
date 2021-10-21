@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the "andrey-helldar/cashier-sber-qr" project.
+ * This file is part of the "cashier-provider/sber-qr" project.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -12,16 +12,16 @@
  *
  * @license MIT
  *
- * @see https://github.com/andrey-helldar/cashier-sber-qr
+ * @see https://github.com/cashier-provider/sber-qr
  */
 
 namespace Tests;
 
-use Helldar\Cashier\Config\Driver as DriverConfig;
-use Helldar\Cashier\Constants\Driver as DriverConstant;
-use Helldar\Cashier\Facades\Config\Payment as PaymentConfig;
-use Helldar\Cashier\Models\CashierDetail;
-use Helldar\CashierDriver\Sber\QrCode\Driver;
+use CashierProvider\Core\Config\Driver as DriverConfig;
+use CashierProvider\Core\Constants\Driver as DriverConstant;
+use CashierProvider\Core\Facades\Config\Payment as PaymentConfig;
+use CashierProvider\Core\Models\CashierDetail;
+use CashierProvider\Sber\QrCode\Driver;
 use Helldar\Contracts\Cashier\Http\Request;
 use Helldar\Contracts\Cashier\Resources\Details;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
@@ -127,7 +127,7 @@ abstract class TestCase extends BaseTestCase
     }
 
     /**
-     * @param  \Helldar\CashierDriver\Sber\QrCode\Requests\BaseRequest|string  $request
+     * @param  \CashierProvider\Sber\QrCode\Requests\BaseRequest|string  $request
      *
      * @return \Helldar\Contracts\Cashier\Http\Request
      */

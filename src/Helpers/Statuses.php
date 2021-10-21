@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the "andrey-helldar/cashier-sber-qr" project.
+ * This file is part of the "cashier-provider/sber-qr" project.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -12,12 +12,12 @@
  *
  * @license MIT
  *
- * @see https://github.com/andrey-helldar/cashier-sber-qr
+ * @see https://github.com/cashier-provider/sber-qr
  */
 
-namespace Helldar\CashierDriver\Sber\QrCode\Helpers;
+namespace CashierProvider\Sber\QrCode\Helpers;
 
-use Helldar\Cashier\Services\Statuses as BaseStatus;
+use CashierProvider\Core\Services\Statuses as BaseStatus;
 
 class Statuses extends BaseStatus
 {
