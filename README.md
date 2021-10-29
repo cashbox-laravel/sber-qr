@@ -1,5 +1,7 @@
 # Sber QR Cashier Driver
 
+<img src="https://preview.dragon-code.pro/cashier-provider/sber-qr.svg?brand=laravel" alt="Sber QR Cashier Driver"/>
+
 [![Stable Version][badge_stable]][link_packagist]
 [![Unstable Version][badge_unstable]][link_packagist]
 [![Total Downloads][badge_downloads]][link_packagist]
