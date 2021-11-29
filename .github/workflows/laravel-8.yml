@@ -1,15 +1,17 @@
-name: coverage
-on:
-    push:
-        branches:
-            - main
-            - coverage
+name: "Laravel 8"
+on: [ push ]
 
 jobs:
-    scrutinizer:
+    build:
         runs-on: ubuntu-latest
 
-        name: Coverage
+        strategy:
+            fail-fast: true
+            matrix:
+                php: [ "7.3", "7.4", "8.0", "8.1" ]
+                laravel: [ "8.0" ]
+
+        name: PHP ${{ matrix.php }}, Laravel ${{ matrix.laravel }}
 
         services:
             mysql:
@@ -28,9 +30,9 @@ jobs:
             -   name: Setup PHP
                 uses: shivammathur/setup-php@v2
                 with:
-                    php-version: 7.4
+                    php-version: ${{ matrix.php }}
                     extensions: curl, mbstring, zip, pcntl, pdo, pdo_sqlite, iconv, bcmath
-                    coverage: xdebug
+                    coverage: none
 
             -   name: Store environment variables
                 run: |
@@ -40,17 +42,10 @@ jobs:
                     echo "CASHIER_SBER_QR_TERMINAL_ID=${{ secrets.CASHIER_SBER_QR_TERMINAL_ID }}" >> .env
 
             -   name: Install dependencies
-                run: composer update --prefer-stable --prefer-dist --no-progress --no-interaction
+                run: composer require laravel/framework:^${{ matrix.laravel }} --prefer-stable --prefer-dist --no-progress --no-interaction
 
             -   name: Execute tests
-                run: |
-                    mkdir -p build/logs
-                    sudo vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
+                run: sudo vendor/bin/phpunit
                 env:
                     MYSQL_HOST: 127.0.0.1
                     PGSQL_HOST: 127.0.0.1
-
-            -   name: Export
-                run: |
-                    wget https://scrutinizer-ci.com/ocular.phar
-                    sudo php ocular.phar code-coverage:upload --format=php-clover coverage.clover
