@@ -117,7 +117,7 @@ class ExceptionTest extends TestCase
         $this->throw(10000, 'Foo Bar');
     }
 
-    protected function throw($code, string $reason = null)
+    protected function throw($code, ?string $reason = null)
     {
         $this->manager()->throw($this->uri(), $code, [
             'Message' => $reason,
