@@ -23,6 +23,24 @@
         "issues": "https://github.com/cashier-provider/sber-qr/issues",
         "source": "https://github.com/cashier-provider/sber-qr"
     },
+    "funding": [
+        {
+            "type": "github",
+            "url": "https://github.com/sponsors/TheDragonCode"
+        },
+        {
+            "type": "open_collective",
+            "url": "https://opencollective.com/dragon-code"
+        },
+        {
+            "type": "boosty",
+            "url": "https://boosty.to/dragon-code"
+        },
+        {
+            "type": "yoomoney",
+            "url": "https://yoomoney.ru/to/410012608840929"
+        }
+    ],
     "require": {
         "php": "^7.3 || ^8.0",
         "cashier-provider/core": "^3.0",
