@@ -98,7 +98,7 @@ abstract class TestCase extends BaseTestCase
         ]);
     }
 
-    protected function model(Details $details = null, int $status_id = 0): EloquentModel
+    protected function model(?Details $details = null, int $status_id = 0): EloquentModel
     {
         $model = PaymentConfig::getModel();
 
@@ -127,7 +127,7 @@ abstract class TestCase extends BaseTestCase
     }
 
     /**
-     * @param  \CashierProvider\Sber\QrCode\Requests\BaseRequest|string  $request
+     * @param \CashierProvider\Sber\QrCode\Requests\BaseRequest|string $request
      *
      * @return \DragonCode\Contracts\Cashier\Http\Request
      */
