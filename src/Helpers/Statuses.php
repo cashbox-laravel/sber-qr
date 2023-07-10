@@ -24,17 +24,13 @@ class Statuses extends BaseStatus
     public const NEW = [
         'CREATED',
     ];
-
     public const REFUNDING = [];
-
-    public const REFUNDED = [
+    public const REFUNDED  = [
         'REVERSED',
         'REFUNDED',
         'REVOKED',
     ];
-
-    public const FAILED = [];
-
+    public const FAILED  = [];
     public const SUCCESS = [
         'PAID',
     ];
