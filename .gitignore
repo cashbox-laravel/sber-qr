@@ -4,14 +4,11 @@ node_modules/
 vendor/
 
 .env
-
-*.p12
-*.pem
-*.crt
-*.key
+http-client.private.env.json
 
 *.bak
 *.cache
 *.clover
 *.orig
+*.log
 *.lock
