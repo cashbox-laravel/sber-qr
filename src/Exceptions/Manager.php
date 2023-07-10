@@ -15,7 +15,7 @@
  * @see https://github.com/cashier-provider/sber-qr
  */
 
-namespace CashierProvider\Sber\QrCode\Exceptions;
+namespace SberQR\src\Exceptions;
 
 use CashierProvider\Core\Exceptions\Http\BadRequestClientException;
 use CashierProvider\Core\Exceptions\Http\BankInternalErrorException;

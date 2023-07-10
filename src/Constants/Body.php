@@ -15,7 +15,7 @@
  * @see https://github.com/cashier-provider/sber-qr
  */
 
-namespace CashierProvider\Sber\QrCode\Constants;
+namespace SberQR\src\Constants;
 
 class Body
 {

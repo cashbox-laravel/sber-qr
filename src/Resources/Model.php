@@ -15,7 +15,7 @@
  * @see https://github.com/cashier-provider/sber-qr
  */
 
-namespace CashierProvider\Sber\QrCode\Resources;
+namespace SberQR\src\Resources;
 
 use CashierProvider\Core\Resources\Model as BaseModel;
 

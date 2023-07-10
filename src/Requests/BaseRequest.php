@@ -17,7 +17,7 @@
 
 declare(strict_types=1);
 
-namespace CashierProvider\Sber\QrCode\Requests;
+namespace SberQR\src\Requests;
 
 use CashierProvider\Core\Facades\Config\Main;
 use CashierProvider\Core\Facades\Helpers\Date;

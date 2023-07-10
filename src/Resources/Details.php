@@ -17,7 +17,7 @@
 
 declare(strict_types=1);
 
-namespace CashierProvider\Sber\QrCode\Resources;
+namespace SberQR\src\Resources;
 
 use CashierProvider\Core\Resources\Details as BaseDetails;
 

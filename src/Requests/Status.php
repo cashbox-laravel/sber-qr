@@ -17,10 +17,11 @@
 
 declare(strict_types=1);
 
-namespace CashierProvider\Sber\QrCode\Requests;
+namespace SberQR\src\Requests;
 
-use CashierProvider\Sber\QrCode\Constants\Body;
-use CashierProvider\Sber\QrCode\Constants\Scopes;
+use SberQR\src\Constants\Body;
+use SberQR\src\Constants\Scopes;
+use SberQR\src\Requests\BaseRequest;
 
 class Status extends BaseRequest
 {

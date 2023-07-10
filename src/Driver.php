@@ -15,18 +15,18 @@
  * @see https://github.com/cashier-provider/sber-qr
  */
 
-namespace CashierProvider\Sber\QrCode;
+namespace SberQR\src;
 
 use CashierProvider\Core\Services\Driver as BaseDriver;
-use CashierProvider\Sber\QrCode\Exceptions\Manager;
-use CashierProvider\Sber\QrCode\Helpers\Statuses;
-use CashierProvider\Sber\QrCode\Requests\Cancel;
-use CashierProvider\Sber\QrCode\Requests\Create;
-use CashierProvider\Sber\QrCode\Requests\Status;
-use CashierProvider\Sber\QrCode\Resources\Details;
-use CashierProvider\Sber\QrCode\Responses\Cancel as CancelResponse;
-use CashierProvider\Sber\QrCode\Responses\QrCode;
-use CashierProvider\Sber\QrCode\Responses\Status as StatusResponse;
+use SberQR\src\Exceptions\Manager;
+use SberQR\src\Helpers\Statuses;
+use SberQR\src\Requests\Cancel;
+use SberQR\src\Requests\Create;
+use SberQR\src\Requests\Status;
+use SberQR\src\Resources\Details;
+use SberQR\src\Responses\Cancel as CancelResponse;
+use SberQR\src\Responses\QrCode;
+use SberQR\src\Responses\Status as StatusResponse;
 use DragonCode\Contracts\Cashier\Http\Response;
 
 class Driver extends BaseDriver
