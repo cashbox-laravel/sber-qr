@@ -17,7 +17,7 @@
 
 namespace Tests\Fixtures\Models;
 
-use CashierProvider\Core\Concerns\Casheable;
+use CashierProvider\Core\Billable;
 use DragonCode\LaravelSupport\Eloquent\UuidModel;
 use Illuminate\Support\Carbon;
 use Tests\TestCase;
@@ -32,7 +32,7 @@ use Tests\TestCase;
  */
 class StatusPayment extends UuidModel
 {
-    use Casheable;
+    use Billable;
 
     protected function getUuidAttribute(): string
     {
