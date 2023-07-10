@@ -15,7 +15,7 @@
  * @see https://github.com/cashier-provider/sber-qr
  */
 
-namespace SberQR\src\Helpers;
+namespace CashierProvider\Sber\QrCode\Helpers;
 
 use CashierProvider\Core\Services\Statuses as BaseStatus;
 

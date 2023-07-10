@@ -17,7 +17,7 @@
 
 declare(strict_types=1);
 
-namespace SberQR\src\Responses;
+namespace CashierProvider\Sber\QrCode\Responses;
 
 use CashierProvider\Core\Http\Response;
 

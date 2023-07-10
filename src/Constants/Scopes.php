@@ -15,7 +15,7 @@
  * @see https://github.com/cashier-provider/sber-qr
  */
 
-namespace SberQR\src\Constants;
+namespace CashierProvider\Sber\QrCode\Constants;
 
 class Scopes
 {

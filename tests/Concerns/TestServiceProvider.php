@@ -17,24 +17,17 @@
 
 declare(strict_types=1);
 
-namespace CashierProvider\Sber\QrCode\Resources;
+namespace Tests\Concerns;
 
-use CashierProvider\Core\Resources\Details as BaseDetails;
+use CashierProvider\Core\Providers\ServiceProvider;
 
-class Details extends BaseDetails
+class TestServiceProvider extends ServiceProvider
 {
-    protected $url;
-
-    public function getUrl(): ?string
+    protected function bootMigrations(): void
     {
-        return $this->url;
-    }
-
-    public function toArray(): array
-    {
-        return [
-            'status' => $this->status,
-            'url'    => $this->url,
-        ];
+        $this->loadMigrationsFrom([
+            __DIR__ . '/../database/migrations',
+            __DIR__ . '/../../vendor/cashier-provider/core/database/migrations/main',
+        ]);
     }
 }
