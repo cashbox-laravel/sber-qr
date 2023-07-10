@@ -1,253 +1,53 @@
-# Sber QR Cashier Driver
+# Sber QR Code Driver
 
-<img src="https://preview.dragon-code.pro/cashier-provider/sber-qr.svg?brand=laravel&mode=dark" alt="Sber QR Cashier Driver"/>
+![cashier-provider](https://preview.dragon-code.pro/cashier-provider/sber-qr-code.svg?brand=laravel)
 
 [![Stable Version][badge_stable]][link_packagist]
 [![Unstable Version][badge_unstable]][link_packagist]
 [![Total Downloads][badge_downloads]][link_packagist]
 [![License][badge_license]][link_license]
 
-
-## Installation
-
-To get the latest version of `Sber QR Cashier Driver`, simply require the project using [Composer](https://getcomposer.org):
-
-```bash
-$ composer require cashier-provider/sber-qr
-```
-
-Or manually update `require` block of `composer.json` and run `composer update`.
-
-```json
-{
-    "require": {
-        "cashier-provider/sber-qr": "^2.0"
-    }
-}
-```
-
-## Using
-
-> **Note**:
+> Attention
 >
-> This project is the driver for [`Cashier Provider`](https://github.com/cashier-provider/core).
->
-> Member ID and Terminal ID must be provided by the bank manager in response to the agreement concluded with the bank.
->
-> You can get the values of the `client_id`, `client_secret`, `certificate file` and `certificate password` yourself through the developer's [personal account](https://developer.sberbank.ru/doc).
+> The project is in a state of global upgrade and some links may not be correct.
 
+> The driver is in a state of development.
+> If you have an opportunity to help in development, please write to us.
 
-### Configuration
+## About Cashier Provider
 
-Add your driver information to the `config/cashier.php` file:
+`Cashier` provides an expressive and user-friendly interface for managing billing and payment verification services.
+We believe that development should be an enjoyable, creative experience to be truly rewarding.
+`Cashier Provider` tries to ease development by simplifying the tasks of adding payment systems to a web application.
 
-```php
-use App\Models\Payment;
-use App\Payments\Sber as SberQrDetails;
-use CashierProvider\Core\Constants\Driver;
-use CashierProvider\Sber\QrCode\Driver as SberQrDriver;
+The project contains some ready-made solutions of payment systems, but you can offer your own.
 
-return [
-    'payment' => [
-        'map' => [
-            Payment::TYPE_SBER => 'sber_qr'
-        ]
-    ],
+## About Driver
 
-    'drivers' => [
-        'sber_qr' => [
-            Driver::DRIVER  => SberQrDriver::class,
-            Driver::DETAILS => SberQrDetails::class,
+The driver allows you to implement payment on the site using a QR code from [Sberbank](https://www.sberbank.ru).
 
-            Driver::CLIENT_ID       => env('CASHIER_SBER_QR_CLIENT_ID'),
-            Driver::CLIENT_SECRET   => env('CASHIER_SBER_QR_CLIENT_SECRET'),
+## Documentation
 
-            'member_id'   => env('CASHIER_SBER_QR_MEMBER_ID'),
-            'terminal_id' => env('CASHIER_SBER_QR_TERMINAL_ID'),
+You will find full documentation on the dedicated [documentation](https://github.com/cashier-provider/docs) site.
 
-            'certificate_path' => storage_path(env('CASHIER_SBER_QR_CERTIFICATE_PATH')),
+## Contributing
 
-            'certificate_password' => env('CASHIER_SBER_QR_CERTIFICATE_PASSWORD'),
-        ]
-    ]
-];
-```
+Thank you for considering contributing to the `Cashier Provider`!
+The contribution guide can be found in the [Cashier Provider documentation](https://github.com/cashier-provider/docs).
 
-### Resource
+## Code of Conduct
 
-Create a model resource class inheriting from `CashierProvider\Sber\QrCode\Resources\Model` in your application.
+In order to ensure that the `Cashier Provider` community is welcoming to all, please review and abide by
+the [Code of Conduct](https://github.com/cashier-provider/docs).
 
-Use the `$this->model` link to refer to the payment model. When executed, the `$model` parameter will contain the payment instance.
+## Security Vulnerabilities
 
-```php
-namespace App\Payments;
+Please review [our security policy](https://github.com/cashier-provider/docs) on how to report security vulnerabilities.
 
-use CashierProvider\Sber\QrCode\Resources\Model;
+## License
 
-class Sber extends Model
-{
-    protected function paymentId(): string
-    {
-        return (string) $this->model->id;
-    }
-
-    protected function sum(): float
-    {
-        return (float) $this->model->sum;
-    }
-
-    protected function currency(): int
-    {
-        return $this->model->currency;
-    }
-
-    protected function createdAt(): Carbon
-    {
-        return $this->model->created_at;
-    }
-
-    public function getMemberId(): string
-    {
-        return config('cashier.drivers.sber_qr.member_id');
-    }
-
-    public function getTerminalId(): string
-    {
-        return config('cashier.drivers.sber_qr.terminal_id');
-    }
-
-    public function getCertificatePath(): ?string
-    {
-        return config('cashier.drivers.sber_qr.certificate_path');
-    }
-
-    public function getCertificatePassword(): ?string
-    {
-        return config('cashier.drivers.sber_qr.certificate_password');
-    }
-}
-```
-
-#### Custom Authentication
-
-In some cases, the application can send requests to the bank from different terminals. For example, when one application serves payments of several companies.
-
-In order for the payment to be authorized with the required authorization data, you can override the `clientId` and `clientSecret` methods:
-
-```php
-namespace App\Payments;
-
-use CashierProvider\Sber\QrCode\Resources\Model;
-use Illuminate\Support\Facades\Storage;
-
-class Sber extends Model
-{
-    protected $bank;
-
-    protected function paymentId(): string
-    {
-        return (string) $this->model->id;
-    }
-
-    protected function sum(): float
-    {
-        return (float) $this->model->sum;
-    }
-
-    protected function currency(): int
-    {
-        return $this->model->currency;
-    }
-
-    protected function createdAt(): Carbon
-    {
-        return $this->model->created_at;
-    }
-
-    protected function clientId(): string
-    {
-        return $this->bank()->client_id;
-    }
-
-    protected function clientSecret(): string
-    {
-        return $this->bank()->client_secret;
-    }
-
-    public function getMemberId(): string
-    {
-        return $this->bank()->member_id;
-    }
-
-    public function getTerminalId(): string
-    {
-        return $this->bank()->terminal_id;
-    }
-
-    public function getCertificatePath(): ?string
-    {
-        return Storage::disk('cashier')->path(
-            $this->bank()->certificate_path
-        );
-    }
-
-    public function getCertificatePassword(): ?string
-    {
-        return $this->bank()->certificate_password;
-    }
-
-    protected function bank()
-    {
-        if (! empty($this->bank)) {
-            return $this->bank;
-        }
-
-        return $this->bank = $this->model->types()
-            ->where('type', Payment::TYPE_SBER)
-            ->firstOrFail()
-            ->bank;
-    }
-}
-```
-
-### Response
-
-All requests to the bank and processing of responses are carried out by the [`Cashier Provider`](https://github.com/cashier-provider/core) project.
-
-To get a link, contact him through the cast:
-
-```php
-use App\Models\Payment;
-
-public function getQrCode(Payment $payment): string
-{
-    return $payment->cashier->details->getUrl();
-}
-```
-
-### Available Methods And Details Data
-
-```php
-$payment->cashier->external_id
-// Returns the bank's transaction ID for this operation
-
-$payment->cashier->details->getStatus(): ?string
-// Returns the text status from the bank
-// For example, `CREATED`.
-
-$payment->cashier->details->getUrl(): ?string
-// If the request to get the link was successful, it will return the URL
-// For example, `https://sberbank.ru/qr/?dynamicQr=<hash>`
-
-$payment->cashier->details->toArray(): array
-// Returns an array of status and URL.
-// For example,
-//
-// [
-//     'url' => 'https://sberbank.ru/qr/?dynamicQr=<hash>',
-//     'status' => 'CREATED'
-// ]
-```
+The Cashier Provider is open-source software that works in conjunction with
+the [Laravel framework](https://laravel.com/), distributed under the MIT license.
 
 [badge_downloads]:      https://img.shields.io/packagist/dt/cashier-provider/sber-qr.svg?style=flat-square
 
