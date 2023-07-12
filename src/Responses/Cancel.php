@@ -17,9 +17,9 @@ declare(strict_types=1);
 
 namespace CashierProvider\Sber\QrCode\Responses;
 
-use CashierProvider\Core\Http\Response;
+use CashierProvider\Core\Http\ResponseInfo;
 
-class Cancel extends Response
+class Cancel extends ResponseInfo
 {
     protected $map = [
         self::KEY_EXTERNAL_ID => 'status.order_id',

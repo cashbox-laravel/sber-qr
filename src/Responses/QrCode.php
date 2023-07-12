@@ -17,9 +17,9 @@ declare(strict_types=1);
 
 namespace CashierProvider\Sber\QrCode\Responses;
 
-use CashierProvider\Core\Http\Response;
+use CashierProvider\Core\Http\ResponseInfo;
 
-class QrCode extends Response
+class QrCode extends ResponseInfo
 {
     public const KEY_URL = 'url';
 

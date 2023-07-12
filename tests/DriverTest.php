@@ -15,7 +15,7 @@
 
 namespace Tests;
 
-use CashierProvider\Core\Http\Response;
+use CashierProvider\Core\Http\ResponseInfo;
 use CashierProvider\Core\Services\Jobs;
 use CashierProvider\Sber\QrCode\Driver as QR;
 use DragonCode\Contracts\Cashier\Driver as DriverContract;
@@ -34,7 +34,7 @@ class DriverTest extends TestCase
 
         $response = $this->driver($payment)->start();
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInfo::class, $response);
         $this->assertInstanceOf(ResponseContract::class, $response);
 
         $this->assertIsString($response->getExternalId());
@@ -53,7 +53,7 @@ class DriverTest extends TestCase
 
         $response = $this->driver($payment)->check();
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInfo::class, $response);
         $this->assertInstanceOf(ResponseContract::class, $response);
 
         $this->assertIsString($response->getExternalId());
@@ -77,7 +77,7 @@ class DriverTest extends TestCase
 
         $response = $this->driver($payment)->refund();
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ResponseInfo::class, $response);
         $this->assertInstanceOf(ResponseContract::class, $response);
 
         $this->assertIsString($response->getExternalId());
