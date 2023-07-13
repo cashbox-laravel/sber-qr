@@ -30,6 +30,12 @@ The driver allows you to implement payment on the site using a QR code from [Sbe
 
 You will find full documentation on the dedicated [documentation](https://cashbox-laravel.github.io/docs) site.
 
+We also have Telegram channels where we post announcements:
+
+- [English](https://t.me/dragon_code_news_en)
+- [Русский](https://t.me/dragon_code_news)
+- [Украинский](https://t.me/dragon_code_news_ua)
+
 ## Contributing
 
 Thank you for considering contributing to the `Cashbox`!
