@@ -13,7 +13,7 @@
  * @see https://github.com/cashbox-laravel/foundation
  */
 
-namespace CashierProvider\Sber\QrCode\Constants;
+namespace Cashbox\Sber\QrCode\Constants;
 
 class Scopes
 {

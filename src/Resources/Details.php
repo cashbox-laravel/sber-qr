@@ -15,9 +15,9 @@
 
 declare(strict_types=1);
 
-namespace CashierProvider\Sber\QrCode\Resources;
+namespace Cashbox\Sber\QrCode\Resources;
 
-use CashierProvider\Core\Resources\Details as BaseDetails;
+use Cashbox\Core\Resources\Details as BaseDetails;
 
 class Details extends BaseDetails
 {

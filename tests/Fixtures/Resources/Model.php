@@ -15,7 +15,7 @@
 
 namespace Tests\Fixtures\Resources;
 
-use CashierProvider\Sber\QrCode\Resources\Model as BaseModel;
+use Cashbox\Sber\QrCode\Resources\Model as BaseModel;
 use Illuminate\Support\Carbon;
 
 /** @property \Tests\Fixtures\Models\ReadyPayment $model */

@@ -15,10 +15,10 @@
 
 declare(strict_types=1);
 
-namespace CashierProvider\Sber\QrCode\Requests;
+namespace Cashbox\Sber\QrCode\Requests;
 
-use CashierProvider\Sber\QrCode\Constants\Body;
-use CashierProvider\Sber\QrCode\Constants\Scopes;
+use Cashbox\Sber\QrCode\Constants\Body;
+use Cashbox\Sber\QrCode\Constants\Scopes;
 
 class Cancel extends BaseRequest
 {

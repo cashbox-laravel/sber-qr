@@ -15,10 +15,10 @@
 
 namespace Tests\Helpers;
 
-use CashierProvider\Core\Exceptions\Http\BadRequestClientException;
-use CashierProvider\Core\Exceptions\Http\BankInternalErrorException;
-use CashierProvider\Core\Exceptions\Http\BaseException;
-use CashierProvider\Sber\QrCode\Exceptions\Manager;
+use Cashbox\Core\Exceptions\Http\BadRequestClientException;
+use Cashbox\Core\Exceptions\Http\BankInternalErrorException;
+use Cashbox\Core\Exceptions\Http\BaseException;
+use Cashbox\Sber\QrCode\Exceptions\Manager;
 use DragonCode\Contracts\Http\Builder as HttpBuilder;
 use DragonCode\Support\Facades\Http\Builder;
 use Tests\TestCase;

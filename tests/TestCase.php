@@ -15,11 +15,11 @@
 
 namespace Tests;
 
-use CashierProvider\Core\Config\Driver as DriverConfig;
-use CashierProvider\Core\Constants\Driver as DriverConstant;
-use CashierProvider\Core\Facades\Config\Payment as PaymentConfig;
-use CashierProvider\Core\Models\CashierDetail;
-use CashierProvider\Sber\QrCode\Driver;
+use Cashbox\Core\Config\Driver as DriverConfig;
+use Cashbox\Core\Constants\Driver as DriverConstant;
+use Cashbox\Core\Facades\Config\Payment as PaymentConfig;
+use Cashbox\Core\Models\CashierDetail;
+use Cashbox\Sber\QrCode\Driver;
 use DragonCode\Contracts\Cashier\Http\Request;
 use DragonCode\Contracts\Cashier\Resources\Details;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
@@ -114,7 +114,7 @@ abstract class TestCase extends BaseTestCase
     }
 
     /**
-     * @param  \CashierProvider\Sber\QrCode\Requests\BaseRequest|string  $request
+     * @param  \Cashbox\Sber\QrCode\Requests\BaseRequest|string  $request
      */
     protected function request(string $request): Request
     {

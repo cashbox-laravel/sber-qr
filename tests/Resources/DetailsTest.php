@@ -15,8 +15,8 @@
 
 namespace Tests\Resources;
 
-use CashierProvider\Core\Resources\Details as BaseDetails;
-use CashierProvider\Sber\QrCode\Resources\Details;
+use Cashbox\Core\Resources\Details as BaseDetails;
+use Cashbox\Sber\QrCode\Resources\Details;
 use DragonCode\Contracts\Cashier\Resources\Details as DetailsContract;
 use Tests\TestCase;
 

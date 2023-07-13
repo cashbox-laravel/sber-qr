@@ -13,9 +13,9 @@
  * @see https://github.com/cashbox-laravel/foundation
  */
 
-namespace CashierProvider\Sber\QrCode\Resources;
+namespace Cashbox\Sber\QrCode\Resources;
 
-use CashierProvider\Core\Resources\Model as BaseModel;
+use Cashbox\Core\Resources\Model as BaseModel;
 
 abstract class Model extends BaseModel
 {

@@ -51,7 +51,7 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "CashierProvider\\Sber\\QrCode\\": "src/"
+            "Cashbox\\Sber\\QrCode\\": "src/"
         }
     },
     "config": {

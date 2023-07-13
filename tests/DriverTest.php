@@ -15,9 +15,9 @@
 
 namespace Tests;
 
-use CashierProvider\Core\Http\ResponseInfo;
-use CashierProvider\Core\Services\Jobs;
-use CashierProvider\Sber\QrCode\Driver as QR;
+use Cashbox\Core\Http\ResponseInfo;
+use Cashbox\Core\Services\Jobs;
+use Cashbox\Sber\QrCode\Driver as QR;
 use DragonCode\Contracts\Cashier\Driver as DriverContract;
 use DragonCode\Contracts\Cashier\Http\Response as ResponseContract;
 use DragonCode\Support\Facades\Http\Url;

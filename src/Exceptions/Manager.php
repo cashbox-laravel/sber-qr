@@ -13,14 +13,14 @@
  * @see https://github.com/cashbox-laravel/foundation
  */
 
-namespace CashierProvider\Sber\QrCode\Exceptions;
+namespace Cashbox\Sber\QrCode\Exceptions;
 
-use CashierProvider\Core\Exceptions\Http\BadRequestClientException;
-use CashierProvider\Core\Exceptions\Http\BankInternalErrorException;
-use CashierProvider\Core\Exceptions\Http\MethodNotFoundException;
-use CashierProvider\Core\Exceptions\Http\TooManyRequestsException;
-use CashierProvider\Core\Exceptions\Http\UnauthorizedException;
-use CashierProvider\Core\Exceptions\Manager as ExceptionManager;
+use Cashbox\Core\Exceptions\Http\BadRequestClientException;
+use Cashbox\Core\Exceptions\Http\BankInternalErrorException;
+use Cashbox\Core\Exceptions\Http\MethodNotFoundException;
+use Cashbox\Core\Exceptions\Http\TooManyRequestsException;
+use Cashbox\Core\Exceptions\Http\UnauthorizedException;
+use Cashbox\Core\Exceptions\Manager as ExceptionManager;
 
 class Manager extends ExceptionManager
 {

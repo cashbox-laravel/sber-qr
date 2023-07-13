@@ -13,18 +13,18 @@
  * @see https://github.com/cashbox-laravel/foundation
  */
 
-namespace CashierProvider\Sber\QrCode;
+namespace Cashbox\Sber\QrCode;
 
-use CashierProvider\Core\Services\Driver as BaseDriver;
-use CashierProvider\Sber\QrCode\Exceptions\Manager;
-use CashierProvider\Sber\QrCode\Helpers\Statuses;
-use CashierProvider\Sber\QrCode\Requests\Cancel;
-use CashierProvider\Sber\QrCode\Requests\Create;
-use CashierProvider\Sber\QrCode\Requests\Status;
-use CashierProvider\Sber\QrCode\Resources\Details;
-use CashierProvider\Sber\QrCode\Responses\Cancel as CancelResponse;
-use CashierProvider\Sber\QrCode\Responses\QrCode;
-use CashierProvider\Sber\QrCode\Responses\Status as StatusResponse;
+use Cashbox\Core\Services\Driver as BaseDriver;
+use Cashbox\Sber\QrCode\Exceptions\Manager;
+use Cashbox\Sber\QrCode\Helpers\Statuses;
+use Cashbox\Sber\QrCode\Requests\Cancel;
+use Cashbox\Sber\QrCode\Requests\Create;
+use Cashbox\Sber\QrCode\Requests\Status;
+use Cashbox\Sber\QrCode\Resources\Details;
+use Cashbox\Sber\QrCode\Responses\Cancel as CancelResponse;
+use Cashbox\Sber\QrCode\Responses\QrCode;
+use Cashbox\Sber\QrCode\Responses\Status as StatusResponse;
 use DragonCode\Contracts\Cashier\Http\Response;
 
 class Driver extends BaseDriver

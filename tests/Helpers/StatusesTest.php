@@ -15,8 +15,8 @@
 
 namespace Tests\Helpers;
 
-use CashierProvider\Sber\QrCode\Helpers\Statuses;
-use CashierProvider\Sber\QrCode\Resources\Details;
+use Cashbox\Sber\QrCode\Helpers\Statuses;
+use Cashbox\Sber\QrCode\Resources\Details;
 use Tests\Fixtures\Models\StatusPayment;
 use Tests\TestCase;
 

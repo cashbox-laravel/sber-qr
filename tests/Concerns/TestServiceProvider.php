@@ -17,7 +17,7 @@ declare(strict_types=1);
 
 namespace Tests\Concerns;
 
-use CashierProvider\Core\Providers\ServiceProvider;
+use Cashbox\Core\Providers\ServiceProvider;
 
 class TestServiceProvider extends ServiceProvider
 {

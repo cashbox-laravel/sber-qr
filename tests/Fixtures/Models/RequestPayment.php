@@ -14,7 +14,7 @@
 
 namespace Tests\Fixtures\Models;
 
-use CashierProvider\Core\Billable;
+use Cashbox\Core\Billable;
 use DragonCode\LaravelSupport\Eloquent\UuidModel;
 
 /**

@@ -15,12 +15,12 @@
 
 declare(strict_types=1);
 
-namespace CashierProvider\Sber\QrCode\Requests;
+namespace Cashbox\Sber\QrCode\Requests;
 
-use CashierProvider\Core\Facades\Config\Main;
-use CashierProvider\Core\Facades\Helpers\Date;
-use CashierProvider\Core\Http\Request;
-use CashierProvider\Sber\Auth\Auth;
+use Cashbox\Core\Facades\Config\Main;
+use Cashbox\Core\Facades\Helpers\Date;
+use Cashbox\Core\Http\Request;
+use Cashbox\Sber\Auth\Auth;
 use Illuminate\Support\Carbon;
 
 abstract class BaseRequest extends Request

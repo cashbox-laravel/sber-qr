@@ -15,9 +15,9 @@
 
 namespace Tests\Requests;
 
-use CashierProvider\Core\Http\Request;
-use CashierProvider\Sber\QrCode\Constants\Body;
-use CashierProvider\Sber\QrCode\Requests\Cancel;
+use Cashbox\Core\Http\Request;
+use Cashbox\Sber\QrCode\Constants\Body;
+use Cashbox\Sber\QrCode\Requests\Cancel;
 use DragonCode\Contracts\Cashier\Http\Request as RequestContract;
 use DragonCode\Contracts\Http\Builder;
 use DragonCode\Support\Facades\Helpers\Arr;

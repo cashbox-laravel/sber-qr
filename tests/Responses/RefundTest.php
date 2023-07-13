@@ -15,8 +15,8 @@
 
 namespace Tests\Responses;
 
-use CashierProvider\Core\Http\ResponseInfo as BaseResponse;
-use CashierProvider\Sber\QrCode\Responses\Cancel as CancelResponse;
+use Cashbox\Core\Http\ResponseInfo as BaseResponse;
+use Cashbox\Sber\QrCode\Responses\Cancel as CancelResponse;
 use DragonCode\Contracts\Cashier\Http\Response;
 use Tests\TestCase;
 

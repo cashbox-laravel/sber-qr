@@ -15,7 +15,7 @@
 
 namespace Tests\Responses;
 
-use CashierProvider\Sber\QrCode\Responses\QrCode;
+use Cashbox\Sber\QrCode\Responses\QrCode;
 use DragonCode\Contracts\Cashier\Http\Response;
 use Tests\TestCase;
 
@@ -61,7 +61,7 @@ class QrCodeTest extends TestCase
     }
 
     /**
-     * @return \CashierProvider\Sber\QrCode\Responses\QrCode|\DragonCode\Contracts\Cashier\Http\Response
+     * @return \Cashbox\Sber\QrCode\Responses\QrCode|\DragonCode\Contracts\Cashier\Http\Response
      */
     protected function response(): Response
     {
