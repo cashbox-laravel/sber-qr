@@ -45,7 +45,7 @@
         "php": "^8.1",
         "cashbox/core": "^3.0",
         "cashbox/sber-auth": "^3.0",
-        "psr/http-message": "^1.0"
+        "psr/http-message": "^1.1"
     },
     "minimum-stability": "stable",
     "prefer-stable": true,
@@ -70,92 +70,16 @@
         },
         "thanks": [
             {
-                "name": "archtechx/enums",
-                "url": "https://github.com/archtechx/enums"
-            },
-            {
-                "name": "cashbox/cash",
-                "url": "https://github.com/cashbox-laravel/cash"
-            },
-            {
                 "name": "cashbox/core",
                 "url": "https://github.com/cashbox-laravel/core"
-            },
-            {
-                "name": "cashbox/docs",
-                "url": "https://github.com/cashbox-laravel/docs"
-            },
-            {
-                "name": "cashbox/driver",
-                "url": "https://github.com/cashbox-laravel/driver"
-            },
-            {
-                "name": "cashbox/driver-auth",
-                "url": "https://github.com/cashbox-laravel/driver-auth"
             },
             {
                 "name": "cashbox/sber-auth",
                 "url": "https://github.com/cashbox-laravel/sber-auth"
             },
             {
-                "name": "cashbox/sber-online",
-                "url": "https://github.com/cashbox-laravel/sber-online"
-            },
-            {
-                "name": "cashbox/sber-qr",
-                "url": "https://github.com/cashbox-laravel/sber-qr"
-            },
-            {
-                "name": "cashbox/tinkoff-auth",
-                "url": "https://github.com/cashbox-laravel/tinkoff-auth"
-            },
-            {
-                "name": "cashbox/tinkoff-credit",
-                "url": "https://github.com/cashbox-laravel/tinkoff-credit"
-            },
-            {
-                "name": "cashbox/tinkoff-online",
-                "url": "https://github.com/cashbox-laravel/tinkoff-online"
-            },
-            {
-                "name": "cashbox/tinkoff-qr",
-                "url": "https://github.com/cashbox-laravel/tinkoff-qr"
-            },
-            {
-                "name": "dragon-code/laravel-support",
-                "url": "https://github.com/TheDragonCode/laravel-support"
-            },
-            {
-                "name": "dragon-code/support",
-                "url": "https://github.com/TheDragonCode/support"
-            },
-            {
-                "name": "laravel/framework",
-                "url": "https://github.com/laravel/framework"
-            },
-            {
-                "name": "nesbot/carbon",
-                "url": "https://github.com/briannesbitt/Carbon"
-            },
-            {
-                "name": "orchestra/testbench",
-                "url": "https://github.com/orchestral/testbench"
-            },
-            {
-                "name": "pestphp/pest",
-                "url": "https://github.com/pestphp/pest"
-            },
-            {
-                "name": "spatie/laravel-data",
-                "url": "https://github.com/spatie/laravel-data"
-            },
-            {
-                "name": "symfony/console",
-                "url": "https://github.com/symfony/console"
-            },
-            {
-                "name": "symfony/var-dumper",
-                "url": "https://github.com/symfony/var-dumper"
+                "name": "psr/http-message",
+                "url": "https://github.com/php-fig/http-message"
             }
         ],
         "title": "Sber QR Driver"
