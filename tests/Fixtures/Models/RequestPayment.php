@@ -9,7 +9,7 @@
  * @copyright 2023 Andrey Helldar
  * @license MIT
  *
- * @see https://github.com/cashbox/foundation
+ * @see https://github.com/cashbox-laravel/foundation
  */
 
 namespace Tests\Fixtures\Models;
