@@ -1,6 +1,6 @@
 {
     "name": "cashbox/sber-qr",
-    "description": "Driver for payment with QR codes via Sber (see cashbox/core)",
+    "description": "The Sber QR Code driver implements payments in the Sber billing system.",
     "license": "MIT",
     "type": "library",
     "keywords": [
@@ -68,6 +68,7 @@
         "branch-alias": {
             "dev-main": "4.x-dev"
         },
+        "title": "Sber QR Driver",
         "thanks": [
             {
                 "name": "dragon-code/laravel-support",

@@ -1,6 +1,6 @@
-# Sber QR Code Driver
+# Sber QR Driver
 
-![cashbox](https://preview.dragon-code.pro/cashbox/sber-qr-code.svg?brand=laravel)
+![Sber QR Driver](https://preview.dragon-code.pro/cashbox/sber-qr.svg?brand=laravel&preposition=none)
 
 [![Stable Version][badge_stable]][link_packagist]
 [![Unstable Version][badge_unstable]][link_packagist]
@@ -11,20 +11,18 @@
 >
 > The project is in a state of global upgrade and some links may not be correct.
 
-> The driver is in a state of development.
-> If you have an opportunity to help in development, please write to us.
-
 ## About Cashbox
 
-`Cashier` provides an expressive and user-friendly interface for managing billing and payment verification services.
+`Cashbox for Laravel` provides an expressive and user-friendly interface for managing billing and payment verification
+services.
 We believe that development should be an enjoyable, creative experience to be truly rewarding.
 `Cashbox` tries to ease development by simplifying the tasks of adding payment systems to a web application.
 
 The project contains some ready-made solutions of payment systems, but you can offer your own.
 
-## About Driver
+## About Sber QR Driver
 
-The driver allows you to implement payment on the site using a QR code from [Sberbank](https://www.sberbank.ru).
+The Sber QR Code driver implements payments in the Sber billing system.
 
 ## Documentation
 
@@ -39,7 +37,7 @@ We also have Telegram channels where we post announcements:
 ## Contributing
 
 Thank you for considering contributing to the `Cashbox`!
-The contribution guide can be found in the [Cashbox documentation](https://cashbox-laravel.github.io/docs).
+The contribution guide can be found in the [documentation](https://cashbox-laravel.github.io/docs).
 
 ## Code of Conduct
 
@@ -52,8 +50,9 @@ Please review [our security policy](https://cashbox-laravel.github.io/docs) on h
 
 ## License
 
-The Cashbox is open-source software that works in conjunction with
+The `Cashbox` is open-source software that works in conjunction with
 the [Laravel framework](https://laravel.com/), distributed under the MIT license.
+
 
 [badge_downloads]:      https://img.shields.io/packagist/dt/cashbox/sber-qr.svg?style=flat-square
 
