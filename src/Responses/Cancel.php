@@ -17,9 +17,9 @@ declare(strict_types=1);
 
 namespace Cashbox\Sber\QrCode\Responses;
 
-use Cashbox\Core\Http\ResponseInfo;
+use Cashbox\Core\Http\Response;
 
-class Cancel extends ResponseInfo
+class Cancel extends Response
 {
     protected $map = [
         self::KEY_EXTERNAL_ID => 'status.order_id',

@@ -17,9 +17,9 @@ declare(strict_types=1);
 
 namespace Cashbox\Sber\QrCode\Responses;
 
-use Cashbox\Core\Http\ResponseInfo;
+use Cashbox\Core\Http\Response;
 
-class Status extends ResponseInfo
+class Status extends Response
 {
     protected $map = [
         self::KEY_EXTERNAL_ID => 'status.order_id',
