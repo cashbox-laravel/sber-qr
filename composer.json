@@ -68,20 +68,10 @@
         "branch-alias": {
             "dev-main": "4.x-dev"
         },
-        "thanks": [
-            {
-                "name": "cashbox/core",
-                "url": "https://github.com/cashbox-laravel/core"
-            },
-            {
-                "name": "cashbox/sber-auth",
-                "url": "https://github.com/cashbox-laravel/sber-auth"
-            },
-            {
-                "name": "psr/http-message",
-                "url": "https://github.com/php-fig/http-message"
-            }
-        ],
+        "thanks": {
+            "name": "cashbox/docs",
+            "url": "https://github.com/cashbox-laravel/foundation"
+        },
         "title": "Sber QR Driver"
     }
 }
