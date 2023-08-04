@@ -13,46 +13,40 @@
  * @see https://cashbox.city
  */
 
+declare(strict_types=1);
+
 namespace Cashbox\Sber\QrCode;
 
+use Cashbox\Core\Http\Response as BaseResponse;
 use Cashbox\Core\Services\Driver as BaseDriver;
-use Cashbox\Sber\QrCode\Exceptions\Manager;
-use Cashbox\Sber\QrCode\Helpers\Statuses;
-use Cashbox\Sber\QrCode\Requests\Cancel;
-use Cashbox\Sber\QrCode\Requests\Create;
-use Cashbox\Sber\QrCode\Requests\Status;
-use Cashbox\Sber\QrCode\Resources\Details;
-use Cashbox\Sber\QrCode\Responses\Cancel as CancelResponse;
-use Cashbox\Sber\QrCode\Responses\QrCode;
-use Cashbox\Sber\QrCode\Responses\Status as StatusResponse;
-use DragonCode\Contracts\Cashier\Http\Response;
+use Cashbox\Sber\QrCode\Http\Requests\CancelRequest;
+use Cashbox\Sber\QrCode\Http\Requests\CreateRequest;
+use Cashbox\Sber\QrCode\Http\Requests\StatusRequest;
+use Cashbox\Sber\QrCode\Http\Responses\QrCodeResponse;
+use Cashbox\Sber\QrCode\Http\Responses\Response;
+use Cashbox\Sber\QrCode\Services\Exception;
+use Cashbox\Sber\QrCode\Services\Statuses;
 
 class Driver extends BaseDriver
 {
-    protected $exception = Manager::class;
+    protected string $statuses = Statuses::class;
 
-    protected $statuses = Statuses::class;
+    protected string $exception = Exception::class;
 
-    protected $details = Details::class;
+    protected string $response = Response::class;
 
-    public function start(): Response
+    public function start(): BaseResponse
     {
-        $request = Create::make($this->model);
-
-        return $this->request($request, QrCode::class);
+        return $this->request(CreateRequest::class, QrCodeResponse::class);
     }
 
-    public function check(): Response
+    public function verify(): BaseResponse
     {
-        $request = Status::make($this->model);
-
-        return $this->request($request, StatusResponse::class);
+        return $this->request(StatusRequest::class);
     }
 
-    public function refund(): Response
+    public function refund(): BaseResponse
     {
-        $request = Cancel::make($this->model);
-
-        return $this->request($request, CancelResponse::class);
+        return $this->request(CancelRequest::class);
     }
 }

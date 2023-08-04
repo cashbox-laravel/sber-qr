@@ -13,23 +13,17 @@
  * @see https://cashbox.city
  */
 
-namespace Cashbox\Sber\QrCode\Helpers;
+declare(strict_types=1);
+
+namespace Cashbox\Sber\QrCode\Services;
 
 use Cashbox\Core\Services\Statuses as BaseStatus;
 
 class Statuses extends BaseStatus
 {
-    public const NEW = [
-        'CREATED',
-    ];
+    public const FAILED    = [];
+    public const NEW       = ['CREATED'];
+    public const REFUNDED  = ['REVERSED', 'REFUNDED', 'REVOKED'];
     public const REFUNDING = [];
-    public const REFUNDED  = [
-        'REVERSED',
-        'REFUNDED',
-        'REVOKED',
-    ];
-    public const FAILED  = [];
-    public const SUCCESS = [
-        'PAID',
-    ];
+    public const SUCCESS   = ['PAID'];
 }

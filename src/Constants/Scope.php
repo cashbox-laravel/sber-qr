@@ -15,9 +15,9 @@
 
 namespace Cashbox\Sber\QrCode\Constants;
 
-class Scopes
+class Scope
 {
+    public const CANCEL = 'https://api.sberbank.ru/order.cancel';
     public const CREATE = 'https://api.sberbank.ru/order.create';
     public const STATUS = 'https://api.sberbank.ru/order.status';
-    public const CANCEL = 'https://api.sberbank.ru/order.cancel';
 }
